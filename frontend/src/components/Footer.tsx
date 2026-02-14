@@ -1,23 +1,48 @@
 import { Link } from 'react-router-dom';
 
-const COMPANY = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+/**
+ * Updated Footer with new navigation structure
+ */
+
+const AI_FIRST = [
+  { label: 'Core AI', href: '/ai/core-ai' },
+  { label: 'Agentic AI', href: '/ai/agentic-ai' },
+  { label: 'AI Solutions', href: '/ai/solutions' },
 ];
 
 const SERVICES = [
-  { label: 'AI Solutions', href: '/solutions/ai' },
-  { label: 'Web Solutions', href: '/solutions/web' },
-  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'E-commerce Development', href: '/services/ecommerce-development' },
+  { label: 'DevOps & Cloud', href: '/services/devops-cloud-security' },
+  { label: 'Digital Transformation', href: '/services/digital-transformation' },
+  { label: 'AI/ML & Automation', href: '/services/ai-ml-automation' },
+  { label: 'Web & Mobile', href: '/services/web-mobile-development' },
+  { label: 'SaaS Development', href: '/services/saas-product-development' },
+];
+
+const SOLUTIONS = [
+  { label: 'Web Applications', href: '/solutions/web-applications' },
+  { label: 'Enterprise Apps', href: '/solutions/enterprise-applications' },
+  { label: 'CRM & ERP', href: '/solutions/crm-erp-solutions' },
+  { label: 'Marketplaces', href: '/solutions/marketplace-platforms' },
+  { label: 'Cloud Migration', href: '/solutions/cloud-migration' },
 ];
 
 const INDUSTRIES = [
+  { label: 'E-commerce', href: '/industries/ecommerce' },
+  { label: 'Healthcare', href: '/industries/healthcare' },
   { label: 'FinTech', href: '/industries/fintech' },
   { label: 'EdTech', href: '/industries/edtech' },
-  { label: 'Healthcare', href: '/industries/healthcare' },
-  { label: 'Retail', href: '/industries/retail' },
+  { label: 'SaaS', href: '/industries/saas' },
+  { label: 'Real Estate', href: '/industries/real-estate' },
+];
+
+const COMPANY = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const SOCIAL = [
@@ -51,13 +76,13 @@ export default function Footer() {
     <footer className="bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-14 lg:py-16">
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-8">
             <div className="col-span-2 lg:col-span-1">
               <Link to="/" className="inline-block text-xl font-semibold text-white tracking-tight mb-4">
                 RagexAI
               </Link>
               <p className="text-sm text-slate-400 max-w-xs leading-relaxed mb-6">
-                Engineering intelligent digital infrastructure for startups and enterprises.
+                AI-First Web Solutions Agency. Building intelligent digital products that scale businesses.
               </p>
               <div className="flex gap-4">
                 {SOCIAL.map((item) => (
@@ -76,20 +101,11 @@ export default function Footer() {
                 ))}
               </div>
             </div>
-            <FooterColumn title="Company" links={COMPANY} />
+            <FooterColumn title="AI First" links={AI_FIRST} />
             <FooterColumn title="Services" links={SERVICES} />
+            <FooterColumn title="Solutions" links={SOLUTIONS} />
             <FooterColumn title="Industries" links={INDUSTRIES} />
-            <div>
-              <h3 className="text-sm font-semibold text-white tracking-wide mb-5">Contact</h3>
-              <ul className="space-y-3.5 text-sm text-slate-400">
-                <li>
-                  <a href="mailto:hello@ragexai.com" className="hover:text-white transition-colors">
-                    hello@ragexai.com
-                  </a>
-                </li>
-                <li>San Francisco, CA</li>
-              </ul>
-            </div>
+            <FooterColumn title="Company" links={COMPANY} />
           </div>
         </div>
         <div className="py-5 border-t border-slate-800">

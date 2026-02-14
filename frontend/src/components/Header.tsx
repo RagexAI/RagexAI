@@ -1,54 +1,100 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Button from './ui/Button';
 
-const AI_SOLUTIONS = [
-  { label: 'Generative AI', href: '/solutions/ai' },
-  { label: 'AI Agents', href: '/solutions/ai' },
-  { label: 'Machine Learning', href: '/solutions/ai' },
-  { label: 'NLP Systems', href: '/solutions/ai' },
-  { label: 'Computer Vision', href: '/solutions/ai' },
+/**
+ * Updated Header Component with New Navigation Structure
+ * 
+ * Final Layout:
+ * Left: Logo, AI First, Services, Solutions, Portfolio, Industries, About
+ * Right: Let's Connect (Primary CTA)
+ */
+
+// AI First Mega Menu Items
+const AI_FIRST_ITEMS = {
+  'Core AI': [
+    { label: 'Custom AI Model Development', href: '/ai/core-ai' },
+    { label: 'NLP Solutions', href: '/ai/core-ai' },
+    { label: 'Computer Vision', href: '/ai/core-ai' },
+    { label: 'Predictive Analytics', href: '/ai/core-ai' },
+    { label: 'Recommendation Systems', href: '/ai/core-ai' },
+  ],
+  'Agentic AI': [
+    { label: 'Autonomous AI Agents', href: '/ai/agentic-ai' },
+    { label: 'Workflow Automation Agents', href: '/ai/agentic-ai' },
+    { label: 'AI Chat Assistants', href: '/ai/agentic-ai' },
+    { label: 'Multi-Agent Systems', href: '/ai/agentic-ai' },
+    { label: 'Business Process Automation', href: '/ai/agentic-ai' },
+  ],
+  'AI Solutions': [
+    { label: 'AI for E-commerce', href: '/ai/solutions' },
+    { label: 'AI for Healthcare', href: '/ai/solutions' },
+    { label: 'AI for FinTech', href: '/ai/solutions' },
+    { label: 'Enterprise AI Integration', href: '/ai/solutions' },
+  ],
+};
+
+// Services Dropdown
+const SERVICES_ITEMS = [
+  { label: 'E-commerce Development', href: '/services/ecommerce-development' },
+  { label: 'DevOps, Cloud & Security', href: '/services/devops-cloud-security' },
+  { label: 'Digital Transformation', href: '/services/digital-transformation' },
+  { label: 'Managed IT Services', href: '/services/managed-it-services' },
+  { label: 'AI/ML & Automation', href: '/services/ai-ml-automation' },
+  { label: 'Web & Mobile Development', href: '/services/web-mobile-development' },
+  { label: 'SaaS Product Development', href: '/services/saas-product-development' },
 ];
 
-const WEB_SOLUTIONS = [
-  { label: 'Custom Web Development', href: '/solutions/web' },
-  { label: 'SaaS Platforms', href: '/solutions/web' },
-  { label: 'Enterprise Systems', href: '/solutions/web' },
-  { label: 'eCommerce Solutions', href: '/solutions/web' },
-  { label: 'UI/UX Engineering', href: '/solutions/web' },
+// Solutions Dropdown
+const SOLUTIONS_ITEMS = [
+  { label: 'Web-Based Applications', href: '/solutions/web-applications' },
+  { label: 'Enterprise Applications', href: '/solutions/enterprise-applications' },
+  { label: 'CRM & ERP Solutions', href: '/solutions/crm-erp-solutions' },
+  { label: 'Marketplace Platforms', href: '/solutions/marketplace-platforms' },
+  { label: 'Cloud Migration', href: '/solutions/cloud-migration' },
 ];
 
-const INDUSTRIES = [
-  { label: 'FinTech', href: '/industries/fintech' },
-  { label: 'EdTech', href: '/industries/edtech' },
+// Industries Dropdown
+const INDUSTRIES_ITEMS = [
+  { label: 'E-commerce & Retail', href: '/industries/ecommerce' },
   { label: 'Healthcare', href: '/industries/healthcare' },
-  { label: 'Logistics', href: '/industries/logistics' },
-  { label: 'Retail', href: '/industries/retail' },
+  { label: 'FinTech & Banking', href: '/industries/fintech' },
+  { label: 'EdTech', href: '/industries/edtech' },
+  { label: 'SaaS Companies', href: '/industries/saas' },
+  { label: 'Real Estate', href: '/industries/real-estate' },
 ];
 
-function MegaMenu({
-  title,
-  items,
-  isOpen,
-}: {
-  title: string;
-  items: { label: string; href: string }[];
-  isOpen: boolean;
-}) {
+// About Dropdown
+const ABOUT_ITEMS = [
+  { label: 'About Company', href: '/about' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+];
+
+// AI First Mega Menu Component
+function AIFirstMegaMenu({ isOpen }: { isOpen: boolean }) {
   if (!isOpen) return null;
   return (
-    <div className="fixed left-0 right-0 top-16 z-40 animate-menu-in">
-      <div className="bg-section border-b border-divider shadow-card">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <p className="text-xs font-semibold text-slate-light uppercase tracking-wider mb-4">{title}</p>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-            {items.map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="text-sm text-slate hover:text-accent transition-colors py-2"
-              >
-                {item.label}
-              </Link>
+      <div className="fixed left-0 right-0 top-16 z-40 animate-menu-in">
+      <div className="glass border-b border-border/80 shadow-xl">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="grid grid-cols-3 gap-8">
+            {Object.entries(AI_FIRST_ITEMS).map(([category, items]) => (
+              <div key={category}>
+                <p className="text-sm font-bold text-accent uppercase tracking-wider mb-4">{category}</p>
+                <div className="space-y-2">
+                  {items.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="block text-sm text-body hover:text-primary transition-colors py-1.5"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -57,6 +103,7 @@ function MegaMenu({
   );
 }
 
+// Standard Dropdown Component
 function Dropdown({
   items,
   isOpen,
@@ -66,13 +113,13 @@ function Dropdown({
 }) {
   if (!isOpen) return null;
   return (
-    <div className="absolute left-0 top-full pt-1 z-50 min-w-[180px] animate-menu-in">
-      <div className="bg-section border border-divider rounded-lg shadow-card py-2">
+    <div className="absolute left-0 top-full pt-1 z-50 min-w-[220px] animate-menu-in">
+      <div className="bg-surface border border-border rounded-lg shadow-lg py-2">
         {items.map((item) => (
           <Link
             key={item.label}
             to={item.href}
-            className="block px-4 py-2.5 text-sm text-slate hover:text-accent hover:bg-accent-soft transition-colors"
+            className="block px-4 py-2.5 text-sm text-body hover:text-primary hover:bg-primary/5 transition-colors"
           >
             {item.label}
           </Link>
@@ -108,55 +155,86 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-section transition-all duration-300 ${
-        scrolled ? 'border-b border-divider' : ''
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        scrolled ? 'glass border-b border-border/80 shadow-lg shadow-black/5' : 'bg-surface/95 backdrop-blur-sm'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <Link
             to="/"
-            className="flex items-center shrink-0 tracking-wide font-semibold text-slate text-lg"
+            className="flex items-center shrink-0 tracking-wide font-bold text-heading text-xl"
             onClick={() => setOpenMenu(null)}
           >
             RagexAI
           </Link>
 
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-0.5">
+            {/* AI First - Mega Menu */}
             <div
               className="relative"
-              onMouseEnter={() => open('ai')}
+              onMouseEnter={() => open('ai-first')}
               onMouseLeave={close}
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-slate hover:text-accent transition-colors"
+                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
-                AI Solutions
-                <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'ai' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                AI First
+                <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'ai-first' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <MegaMenu title="AI Solutions" items={AI_SOLUTIONS} isOpen={openMenu === 'ai'} />
+              <AIFirstMegaMenu isOpen={openMenu === 'ai-first'} />
             </div>
 
+            {/* Services */}
             <div
               className="relative"
-              onMouseEnter={() => open('web')}
+              onMouseEnter={() => open('services')}
               onMouseLeave={close}
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-slate hover:text-accent transition-colors"
+                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
-                Web Solutions
-                <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'web' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                Services
+                <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'services' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <MegaMenu title="Web Solutions" items={WEB_SOLUTIONS} isOpen={openMenu === 'web'} />
+              <Dropdown items={SERVICES_ITEMS} isOpen={openMenu === 'services'} />
             </div>
 
+            {/* Solutions */}
+            <div
+              className="relative"
+              onMouseEnter={() => open('solutions')}
+              onMouseLeave={close}
+            >
+              <button
+                type="button"
+                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+              >
+                Solutions
+                <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'solutions' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <Dropdown items={SOLUTIONS_ITEMS} isOpen={openMenu === 'solutions'} />
+            </div>
+
+            {/* Portfolio */}
+            <Link
+              to="/portfolio"
+              className="px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+            >
+              Portfolio
+            </Link>
+
+            {/* Industries */}
             <div
               className="relative"
               onMouseEnter={() => open('industries')}
@@ -164,56 +242,49 @@ export default function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-slate hover:text-accent transition-colors"
+                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
                 Industries
                 <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'industries' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <Dropdown items={INDUSTRIES} isOpen={openMenu === 'industries'} />
+              <Dropdown items={INDUSTRIES_ITEMS} isOpen={openMenu === 'industries'} />
             </div>
 
-            <Link
-              to="/case-studies"
-              className="px-4 py-5 text-sm font-medium text-slate hover:text-accent transition-colors"
+            {/* About */}
+            <div
+              className="relative"
+              onMouseEnter={() => open('about')}
+              onMouseLeave={close}
             >
-              Case Studies
-            </Link>
+              <button
+                type="button"
+                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+              >
+                About
+                <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'about' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <Dropdown items={ABOUT_ITEMS} isOpen={openMenu === 'about'} />
+            </div>
+          </div>
 
+          {/* CTA Button */}
+          <div className="hidden lg:block">
             <Link
-              to="/about"
-              className="px-4 py-5 text-sm font-medium text-slate hover:text-accent transition-colors"
+              to="/contact"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white rounded-xl bg-gradient-to-r from-accent to-emerald-600 hover:from-accent/90 hover:to-emerald-600/90 shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/30 hover:-translate-y-0.5"
             >
-              About
-            </Link>
-
-            <Link
-              to="/blog"
-              className="px-4 py-5 text-sm font-medium text-slate hover:text-accent transition-colors"
-            >
-              Blog
+              Let's Connect
             </Link>
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <Link
-              to="/contact"
-              className="text-sm font-medium text-slate hover:text-accent transition-colors"
-            >
-              Contact
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-accent hover:bg-accent-hover rounded-lg transition-colors"
-            >
-              Start a Project
-            </Link>
-          </div>
-
+          {/* Mobile Menu Button */}
           <button
             type="button"
-            className="lg:hidden p-2 text-slate"
+            className="lg:hidden p-2 text-heading"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -227,28 +298,50 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-divider py-4 animate-menu-in">
+          <div className="lg:hidden border-t border-border py-4 animate-menu-in">
             <div className="space-y-1">
-              <Link to="/" className="block py-3 px-4 text-slate hover:bg-accent-soft rounded-lg" onClick={() => setMobileOpen(false)}>Home</Link>
+              <Link to="/" className="block py-3 px-4 text-heading hover:bg-primary/5 rounded-lg font-medium" onClick={() => setMobileOpen(false)}>Home</Link>
+              
               <div className="py-2 px-4">
-                <p className="text-xs text-slate-light uppercase tracking-wider mb-2">AI Solutions</p>
-                {AI_SOLUTIONS.map((item) => (
-                  <Link key={item.label} to={item.href} className="block py-2.5 text-sm text-slate-muted hover:text-accent pl-2" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                <p className="text-xs text-accent uppercase tracking-wider mb-2 font-bold">AI First</p>
+                {Object.entries(AI_FIRST_ITEMS).map(([category, items]) => (
+                  <div key={category} className="mb-3">
+                    <p className="text-xs text-body font-semibold mb-1">{category}</p>
+                    {items.map((item) => (
+                      <Link key={item.label} to={item.href} className="block py-2 text-sm text-body hover:text-primary pl-2" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                    ))}
+                  </div>
                 ))}
               </div>
+
               <div className="py-2 px-4">
-                <p className="text-xs text-slate-light uppercase tracking-wider mb-2">Web Solutions</p>
-                {WEB_SOLUTIONS.map((item) => (
-                  <Link key={item.label} to={item.href} className="block py-2.5 text-sm text-slate-muted hover:text-accent pl-2" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                <p className="text-xs text-accent uppercase tracking-wider mb-2 font-bold">Services</p>
+                {SERVICES_ITEMS.map((item) => (
+                  <Link key={item.label} to={item.href} className="block py-2 text-sm text-body hover:text-primary" onClick={() => setMobileOpen(false)}>{item.label}</Link>
                 ))}
               </div>
-              <Link to="/case-studies" className="block py-3 px-4 text-slate hover:bg-accent-soft rounded-lg" onClick={() => setMobileOpen(false)}>Case Studies</Link>
-              <Link to="/about" className="block py-3 px-4 text-slate hover:bg-accent-soft rounded-lg" onClick={() => setMobileOpen(false)}>About</Link>
-              <Link to="/blog" className="block py-3 px-4 text-slate hover:bg-accent-soft rounded-lg" onClick={() => setMobileOpen(false)}>Blog</Link>
-              <Link to="/contact" className="block py-3 px-4 text-accent font-semibold" onClick={() => setMobileOpen(false)}>Contact</Link>
+
+              <div className="py-2 px-4">
+                <p className="text-xs text-accent uppercase tracking-wider mb-2 font-bold">Solutions</p>
+                {SOLUTIONS_ITEMS.map((item) => (
+                  <Link key={item.label} to={item.href} className="block py-2 text-sm text-body hover:text-primary" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                ))}
+              </div>
+
+              <Link to="/portfolio" className="block py-3 px-4 text-heading hover:bg-primary/5 rounded-lg font-medium" onClick={() => setMobileOpen(false)}>Portfolio</Link>
+
+              <div className="py-2 px-4">
+                <p className="text-xs text-accent uppercase tracking-wider mb-2 font-bold">Industries</p>
+                {INDUSTRIES_ITEMS.map((item) => (
+                  <Link key={item.label} to={item.href} className="block py-2 text-sm text-body hover:text-primary" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                ))}
+              </div>
+
+              <Link to="/about" className="block py-3 px-4 text-heading hover:bg-primary/5 rounded-lg font-medium" onClick={() => setMobileOpen(false)}>About</Link>
               <Link to="/contact" className="block py-3 px-4" onClick={() => setMobileOpen(false)}>
-                <span className="inline-flex items-center justify-center w-full py-2.5 text-sm font-semibold text-white bg-accent rounded-lg">Start a Project</span>
+                <span className="inline-flex items-center justify-center w-full py-3 text-sm font-semibold text-white rounded-xl bg-gradient-to-r from-accent to-emerald-600 shadow-lg shadow-accent/25">Let's Connect</span>
               </Link>
             </div>
           </div>

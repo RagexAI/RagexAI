@@ -1,23 +1,24 @@
 import { Link } from 'react-router-dom';
+import { IconArrowRight } from '../icons/FeatureIcons';
 
 export default function CTASection() {
   return (
-    <section className="py-section bg-slate">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-          Ready to Build the Future?
+    <section className="relative py-section overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-secondary" />
+      <div className="absolute inset-0 bg-hero-pattern bg-pattern opacity-10" />
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6">
+          Ready to Transform Your Business?
         </h2>
-        <p className="text-slate-300 text-lg mb-10 leading-relaxed">
-          Book a strategy session. We'll map your goals to a clear technical roadmap and delivery plan.
+        <p className="text-white/90 text-lg sm:text-xl mb-10 leading-relaxed max-w-2xl mx-auto">
+          Let's discuss how AI-first solutions can scale your operations and drive growth.
         </p>
         <Link
-          to="/contact#schedule"
-          className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-slate bg-white hover:bg-slate-100 rounded-lg transition-colors"
+          to="/contact"
+          className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary bg-white rounded-xl shadow-xl hover:bg-white/95 transition-all duration-300 hover:scale-[1.02]"
         >
-          Schedule a Strategy Session
-          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          Let's Connect
+          <IconArrowRight className="w-5 h-5 ml-2" />
         </Link>
       </div>
     </section>

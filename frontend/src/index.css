@@ -2,16 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Global CSS Variables for Theme System
+ * Light mode (default) and dark mode support
+ * To change colors globally, update the HSL values below
+ */
+
 :root {
-  --page-bg: #F8FAFC;
-  --section-bg: #FFFFFF;
-  --divider: #E5E7EB;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
-  --accent: #2563EB;
-  --accent-hover: #1D4ED8;
-  --accent-soft: #EFF6FF;
+  /* Light Mode Colors (Default) */
+  --color-primary: 222 89% 55%;
+  --color-secondary: 262 83% 58%;
+  --color-accent: 160 84% 39%;
+  
+  --color-background: 0 0% 100%;
+  --color-surface: 210 20% 98%;
+  
+  --color-heading: 222 47% 11%;
+  --color-body: 215 16% 47%;
+  --color-muted: 214 32% 91%;
+  
+  --color-border: 214 32% 91%;
+  
+  --color-success: 160 84% 39%;
+  --color-warning: 38 92% 50%;
+  --color-error: 0 84% 60%;
+  --color-info: 222 89% 55%;
+}
+
+/* Dark Mode Colors */
+.dark {
+  --color-primary: 222 89% 65%;
+  --color-secondary: 262 83% 68%;
+  --color-accent: 160 84% 49%;
+  
+  --color-background: 222 47% 11%;
+  --color-surface: 223 47% 15%;
+  
+  --color-heading: 210 40% 98%;
+  --color-body: 214 32% 91%;
+  --color-muted: 215 25% 27%;
+  
+  --color-border: 215 25% 27%;
+  
+  --color-success: 160 84% 49%;
+  --color-warning: 38 92% 60%;
+  --color-error: 0 84% 70%;
+  --color-info: 222 89% 65%;
 }
 
 * {
@@ -23,9 +59,70 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--page-bg);
-  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-heading));
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Premium gradients */
+.gradient-mesh {
+  background-color: hsl(var(--color-background));
+  background-image:
+    radial-gradient(at 40% 20%, hsl(var(--color-primary) / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsl(var(--color-secondary) / 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsl(var(--color-accent) / 0.05) 0px, transparent 50%);
+}
+
+.gradient-card-hover {
+  background: linear-gradient(135deg, hsl(var(--color-surface)) 0%, hsl(var(--color-surface)) 100%);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+.gradient-card-hover:hover {
+  box-shadow: 0 20px 40px -15px hsl(var(--color-primary) / 0.15), 0 0 0 1px hsl(var(--color-border));
+  transform: translateY(-4px);
+}
+
+.glass {
+  background: hsl(var(--color-surface) / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Section backgrounds */
+.section-gradient {
+  background: linear-gradient(180deg, hsl(var(--color-background)) 0%, hsl(var(--color-surface) / 0.5) 100%);
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--color-surface));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-muted));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-body));
+}
+
+/* Selection styles */
+::selection {
+  background-color: hsl(var(--color-primary) / 0.2);
+  color: hsl(var(--color-heading));
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid hsl(var(--color-primary));
+  outline-offset: 2px;
 }
