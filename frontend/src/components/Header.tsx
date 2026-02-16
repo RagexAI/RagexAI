@@ -27,10 +27,10 @@ const AI_FIRST_ITEMS = {
     { label: 'Business Process Automation', href: '/ai/agentic-ai' },
   ],
   'AI Solutions': [
-    { label: 'AI for E-commerce', href: '/ai/solutions' },
-    { label: 'AI for Healthcare', href: '/ai/solutions' },
-    { label: 'AI for FinTech', href: '/ai/solutions' },
-    { label: 'Enterprise AI Integration', href: '/ai/solutions' },
+    { label: 'AI for E-commerce', href: '/ai/solutions/ecommerce' },
+    { label: 'AI for Healthcare', href: '/ai/solutions/healthcare' },
+    { label: 'AI for FinTech', href: '/ai/solutions/fintech' },
+    { label: 'Enterprise AI Integration', href: '/ai/solutions/saas' },
   ],
 };
 
@@ -155,12 +155,18 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
-        scrolled ? 'glass border-b border-border/80 shadow-lg shadow-black/5' : 'bg-surface/95 backdrop-blur-sm'
+      className={`sticky top-0 z-40 transition-all duration-300 px-4 sm:px-6 lg:px-8 ${
+        scrolled ? 'py-3' : 'py-4'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <nav
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-2xl border transition-all duration-300 ${
+          scrolled
+            ? 'bg-surface/80 backdrop-blur-md border-border/80 shadow-lg'
+            : 'bg-surface/70 backdrop-blur-md border-border/60 shadow-md'
+        }`}
+      >
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link
             to="/"
@@ -180,7 +186,7 @@ export default function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+                className="flex items-center gap-1 px-4 py-3 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
                 AI First
                 <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'ai-first' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,7 +204,7 @@ export default function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+                className="flex items-center gap-1 px-4 py-3 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
                 Services
                 <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'services' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,7 +222,7 @@ export default function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+                className="flex items-center gap-1 px-4 py-3 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
                 Solutions
                 <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'solutions' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,7 +235,7 @@ export default function Header() {
             {/* Portfolio */}
             <Link
               to="/portfolio"
-              className="px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+              className="px-4 py-3 text-sm font-medium text-heading hover:text-primary transition-colors"
             >
               Portfolio
             </Link>
@@ -242,7 +248,7 @@ export default function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+                className="flex items-center gap-1 px-4 py-3 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
                 Industries
                 <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'industries' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -260,7 +266,7 @@ export default function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 px-4 py-5 text-sm font-medium text-heading hover:text-primary transition-colors"
+                className="flex items-center gap-1 px-4 py-3 text-sm font-medium text-heading hover:text-primary transition-colors"
               >
                 About
                 <svg className={`w-4 h-4 transition-transform duration-200 ${openMenu === 'about' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
