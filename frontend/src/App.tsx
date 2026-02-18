@@ -57,7 +57,9 @@ function App() {
 
         {/* AI First Routes */}
         <Route path="/ai/core-ai" element={<CoreAI />} />
+        <Route path="/ai/core-ai/:slug" element={<CoreAI />} />
         <Route path="/ai/agentic-ai" element={<AgenticAI />} />
+        <Route path="/ai/agentic-ai/:slug" element={<AgenticAI />} />
         <Route path="/ai/solutions" element={<AISolutionsByIndustry />} />
         <Route path="/ai/solutions/:slug" element={<AISolutionsByIndustry />} />
 

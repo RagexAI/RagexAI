@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import PageHero from '../../components/shared/PageHero';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
@@ -5,13 +6,20 @@ import SectionTitle from '../../components/ui/SectionTitle';
 import { AGENTIC_AI_SERVICES, AI_BENEFITS } from '../../data/ai.content';
 
 export default function AgenticAI() {
+  const { slug } = useParams();
+  const selectedService = slug ? AGENTIC_AI_SERVICES.find((service) => service.id === slug) : undefined;
+  const services = selectedService ? [selectedService] : AGENTIC_AI_SERVICES;
+
   return (
     <>
       <PageHero
-        title="Agentic AI Solutions"
-        subtitle="Deploy autonomous AI agents that think, learn, and act independently to automate complex workflows"
+        title={selectedService ? selectedService.title : 'Agentic AI Solutions'}
+        subtitle={
+          selectedService
+            ? selectedService.description
+            : 'Deploy autonomous AI agents that think, learn, and act independently to automate complex workflows'
+        }
         primaryCta={{ label: 'Deploy AI Agents', href: '/contact' }}
-        secondaryCta={{ label: 'Explore Use Cases', href: '#services' }}
       />
 
       {/* What is Agentic AI Section */}
@@ -45,12 +53,16 @@ export default function AgenticAI() {
       <section id="services" className="py-section bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
-            title="Agentic AI Services"
-            subtitle="Intelligent automation solutions for modern businesses"
+            title={selectedService ? 'Agentic AI Capability' : 'Agentic AI Services'}
+            subtitle={
+              selectedService
+                ? 'Focused agentic AI expertise tailored to your workflow'
+                : 'Intelligent automation solutions for modern businesses'
+            }
           />
 
           <div className="grid md:grid-cols-2 gap-8 mt-12">
-            {AGENTIC_AI_SERVICES.map((service) => (
+            {services.map((service) => (
               <Card key={service.id} padding="xl" shadow="md" hover>
                 <div className="flex items-start gap-4 mb-4">
                   <span className="text-5xl">{service.icon}</span>
@@ -198,9 +210,6 @@ export default function AgenticAI() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" to="/contact">
               Start Your AI Journey
-            </Button>
-            <Button variant="outline" size="lg" to="/case-studies" className="!text-white !border-white hover:!bg-white/10">
-              See It In Action
             </Button>
           </div>
         </div>

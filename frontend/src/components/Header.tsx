@@ -13,18 +13,18 @@ import Button from './ui/Button';
 // AI First Mega Menu Items
 const AI_FIRST_ITEMS = {
   'Core AI': [
-    { label: 'Custom AI Model Development', href: '/ai/core-ai' },
-    { label: 'NLP Solutions', href: '/ai/core-ai' },
-    { label: 'Computer Vision', href: '/ai/core-ai' },
-    { label: 'Predictive Analytics', href: '/ai/core-ai' },
-    { label: 'Recommendation Systems', href: '/ai/core-ai' },
+    { label: 'Custom AI Model Development', href: '/ai/core-ai/custom-ai-models' },
+    { label: 'NLP Solutions', href: '/ai/core-ai/nlp-solutions' },
+    { label: 'Computer Vision', href: '/ai/core-ai/computer-vision' },
+    { label: 'Predictive Analytics', href: '/ai/core-ai/predictive-analytics' },
+    { label: 'Recommendation Systems', href: '/ai/core-ai/recommendation-systems' },
   ],
   'Agentic AI': [
-    { label: 'Autonomous AI Agents', href: '/ai/agentic-ai' },
-    { label: 'Workflow Automation Agents', href: '/ai/agentic-ai' },
-    { label: 'AI Chat Assistants', href: '/ai/agentic-ai' },
-    { label: 'Multi-Agent Systems', href: '/ai/agentic-ai' },
-    { label: 'Business Process Automation', href: '/ai/agentic-ai' },
+    { label: 'Autonomous AI Agents', href: '/ai/agentic-ai/autonomous-agents' },
+    { label: 'Workflow Automation Agents', href: '/ai/agentic-ai/workflow-automation' },
+    { label: 'AI Chat Assistants', href: '/ai/agentic-ai/ai-assistants' },
+    { label: 'Multi-Agent Systems', href: '/ai/agentic-ai/multi-agent-systems' },
+    { label: 'Business Process Automation', href: '/ai/agentic-ai/business-automation' },
   ],
   'AI Solutions': [
     { label: 'AI for E-commerce', href: '/ai/solutions/ecommerce' },
@@ -77,7 +77,7 @@ function AIFirstMegaMenu({ isOpen }: { isOpen: boolean }) {
   if (!isOpen) return null;
   return (
       <div className="fixed left-0 right-0 top-16 z-40 animate-menu-in">
-      <div className="glass border-b border-border/80 shadow-xl">
+      <div className="bg-surface/95 backdrop-blur-md border-b border-border/80 shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="grid grid-cols-3 gap-8">
             {Object.entries(AI_FIRST_ITEMS).map(([category, items]) => (
@@ -114,7 +114,7 @@ function Dropdown({
   if (!isOpen) return null;
   return (
     <div className="absolute left-0 top-full pt-1 z-50 min-w-[220px] animate-menu-in">
-      <div className="bg-surface border border-border rounded-lg shadow-lg py-2">
+      <div className="bg-surface/95 border border-border rounded-lg shadow-lg py-2">
         {items.map((item) => (
           <Link
             key={item.label}

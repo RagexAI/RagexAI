@@ -2,7 +2,6 @@ import PageHero from '../shared/PageHero';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import SectionTitle from '../ui/SectionTitle';
-import Accordion from '../ui/Accordion';
 
 /**
  * Service Page Template
@@ -24,33 +23,9 @@ interface ServicePageTemplateProps {
       enterprise: string;
     };
   };
-  caseStudies?: Array<{
-    id: string;
-    title: string;
-    description: string;
-  }>;
 }
 
-const ServicePageTemplate = ({ service, caseStudies }: ServicePageTemplateProps) => {
-  const faqs = [
-    {
-      question: `How long does it take to implement ${service.title}?`,
-      answer: 'Timeline varies based on project scope and complexity. Typical projects range from 8-16 weeks for MVP, with ongoing enhancements.',
-    },
-    {
-      question: 'What is included in the pricing?',
-      answer: 'Our pricing includes discovery, design, development, testing, deployment, and post-launch support. We provide transparent pricing with no hidden costs.',
-    },
-    {
-      question: 'Do you provide ongoing support?',
-      answer: 'Yes, we offer maintenance and support packages to ensure your solution runs smoothly and evolves with your business needs.',
-    },
-    {
-      question: 'Can you integrate with our existing systems?',
-      answer: 'Absolutely. We specialize in integrating with existing tools, databases, and third-party services to create a seamless ecosystem.',
-    },
-  ];
-
+const ServicePageTemplate = ({ service }: ServicePageTemplateProps) => {
   return (
     <>
       {/* Hero Section */}
@@ -168,43 +143,6 @@ const ServicePageTemplate = ({ service, caseStudies }: ServicePageTemplateProps)
         </div>
       </section>
 
-      {/* Case Studies Section */}
-      {caseStudies && caseStudies.length > 0 && (
-        <section className="py-section bg-surface">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionTitle
-              title="Success Stories"
-              subtitle="Real results from real clients"
-            />
-            
-            <div className="grid md:grid-cols-2 gap-8 mt-12">
-              {caseStudies.map((study) => (
-                <Card key={study.id} padding="lg" hover to={`/case-studies/${study.id}`}>
-                  <h3 className="text-2xl font-bold text-heading mb-4">{study.title}</h3>
-                  <p className="text-body mb-6">{study.description}</p>
-                  <Button variant="outline" to={`/case-studies/${study.id}`}>
-                    Read Case Study →
-                  </Button>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* FAQ Section */}
-      <section className="py-section bg-background">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Frequently Asked Questions"
-            subtitle="Common questions about our services"
-          />
-          
-          <div className="mt-12">
-            <Accordion items={faqs} />
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-section bg-primary text-white">

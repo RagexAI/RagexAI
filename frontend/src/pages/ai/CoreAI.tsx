@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import PageHero from '../../components/shared/PageHero';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
@@ -5,25 +6,36 @@ import SectionTitle from '../../components/ui/SectionTitle';
 import { CORE_AI_SERVICES, AI_BENEFITS } from '../../data/ai.content';
 
 export default function CoreAI() {
+  const { slug } = useParams();
+  const selectedService = slug ? CORE_AI_SERVICES.find((service) => service.id === slug) : undefined;
+  const services = selectedService ? [selectedService] : CORE_AI_SERVICES;
+
   return (
     <>
       <PageHero
-        title="Core AI Services"
-        subtitle="Build custom AI models and solutions tailored to your unique business needs"
+        title={selectedService ? selectedService.title : 'Core AI Services'}
+        subtitle={
+          selectedService
+            ? selectedService.description
+            : 'Build custom AI models and solutions tailored to your unique business needs'
+        }
         primaryCta={{ label: "Let's Build AI", href: '/contact' }}
-        secondaryCta={{ label: 'View Case Studies', href: '/case-studies' }}
       />
 
       {/* Services Grid */}
       <section className="py-section bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
-            title="Core AI Capabilities"
-            subtitle="Comprehensive AI services to power your business"
+            title={selectedService ? 'Core AI Capability' : 'Core AI Capabilities'}
+            subtitle={
+              selectedService
+                ? 'Focused AI expertise tailored to your use case'
+                : 'Comprehensive AI services to power your business'
+            }
           />
 
           <div className="grid md:grid-cols-2 gap-8 mt-12">
-            {CORE_AI_SERVICES.map((service) => (
+            {services.map((service) => (
               <Card key={service.id} padding="xl" shadow="md" hover>
                 <div className="flex items-start gap-4 mb-4">
                   <span className="text-5xl">{service.icon}</span>
@@ -102,9 +114,6 @@ export default function CoreAI() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" to="/contact">
               Schedule Consultation
-            </Button>
-            <Button variant="outline" size="lg" to="/case-studies" className="!text-white !border-white hover:!bg-white/10">
-              View Success Stories
             </Button>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import Accordion from '../../components/ui/Accordion';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import SectionTitle from '../../components/ui/SectionTitle';
@@ -20,19 +19,19 @@ export default function AISolutionsByIndustry() {
         className="relative bg-slate-950 text-white border-b border-white/10 bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(120deg, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.78)), url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1600&q=80')",
+            `linear-gradient(120deg, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.78)), url('${industry.heroImage ?? industry.image}')`,
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight max-w-4xl mx-auto">
-            Use Ecommerce{' '}
+            {industry.heroTitlePrefix}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary to-secondary">
-              AI Solutions
+              {industry.heroTitleHighlight}
             </span>{' '}
-            Before Your Competitors Do.
+            {industry.heroTitleSuffix}
           </h1>
           <p className="mt-6 text-lg text-white/80 max-w-2xl mx-auto">
-            Accelerate conversion, automate merchandising, and unlock profit with AI built for modern retail.
+            {industry.heroSubtitle}
           </p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Button variant="primary" size="lg" to="/contact">
@@ -177,25 +176,6 @@ export default function AISolutionsByIndustry() {
             <Button variant="secondary" size="lg" to="/contact">
               Schedule Consultation
             </Button>
-            <Button variant="outline" size="lg" to="/case-studies" className="!text-white !border-white hover:!bg-white/10">
-              View Case Studies
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-section bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle title={industryPage.faq.title} />
-
-          <div className="mt-12">
-            <Accordion
-              items={industryPage.faq.items.map((item) => ({
-                title: item.question,
-                content: item.answer,
-              }))}
-            />
           </div>
         </div>
       </section>

@@ -60,7 +60,7 @@ export const SOLUTIONS_DATA = [
       },
     ],
     
-    technologies: ['React', 'Vue.js', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker'],
+    technologies: ['React', 'Vue.js', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'Redis', 'AWS', 'Docker', 'Kubernetes', 'GraphQL'],
     
     benefits: [
       'Tailored to your exact needs',
@@ -68,9 +68,12 @@ export const SOLUTIONS_DATA = [
       'Own your data and code',
       'Lower total cost of ownership',
       'Competitive advantage',
+      'Faster iteration with modern tooling',
     ],
     
-    caseStudies: ['enterprise-dashboard', 'project-management-tool'],
+    hideCaseStudies: true,
+    hideFaq: true,
+    hideSecondaryCta: true,
   },
   {
     id: 'enterprise-applications',
@@ -128,7 +131,7 @@ export const SOLUTIONS_DATA = [
       },
     ],
     
-    technologies: ['Java', 'Spring Boot', '.NET', 'PostgreSQL', 'Oracle', 'Kubernetes', 'Azure', 'Kafka'],
+    technologies: ['Java', 'Spring Boot', '.NET', 'PostgreSQL', 'Oracle', 'Kubernetes', 'Azure', 'Kafka', 'Redis', 'Terraform', 'Docker'],
     
     benefits: [
       '99.99% uptime SLA',
@@ -136,9 +139,12 @@ export const SOLUTIONS_DATA = [
       'Seamless integrations',
       'Scalable to millions of users',
       'Compliance ready (SOC2, HIPAA, GDPR)',
+      'Operational visibility across systems',
     ],
     
-    caseStudies: ['enterprise-erp', 'financial-platform'],
+    hideCaseStudies: true,
+    hideFaq: true,
+    hideSecondaryCta: true,
   },
   {
     id: 'crm-erp-solutions',
@@ -196,7 +202,7 @@ export const SOLUTIONS_DATA = [
       },
     ],
     
-    technologies: ['Salesforce', 'Custom CRM', 'Odoo', 'SAP', 'React', 'Node.js', 'PostgreSQL', 'Power BI'],
+    technologies: ['Salesforce', 'Custom CRM', 'Odoo', 'SAP', 'React', 'Node.js', 'PostgreSQL', 'Power BI', 'Azure', 'Docker', 'Kafka'],
     
     benefits: [
       '360° customer view',
@@ -204,9 +210,12 @@ export const SOLUTIONS_DATA = [
       'Real-time reporting',
       'Better forecasting',
       'Improved customer satisfaction',
+      'Unified data across teams',
     ],
     
-    caseStudies: ['sales-crm', 'manufacturing-erp'],
+    hideCaseStudies: true,
+    hideFaq: true,
+    hideSecondaryCta: true,
   },
   {
     id: 'marketplace-platforms',
@@ -266,7 +275,7 @@ export const SOLUTIONS_DATA = [
       },
     ],
     
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe Connect', 'Elasticsearch', 'Redis', 'AWS', 'React Native'],
+    technologies: ['React', 'Node.js', 'MongoDB', 'PostgreSQL', 'Stripe Connect', 'Elasticsearch', 'Redis', 'AWS', 'React Native', 'Docker', 'Kubernetes'],
     
     benefits: [
       'Launch in 12-16 weeks',
@@ -274,9 +283,12 @@ export const SOLUTIONS_DATA = [
       'Multiple revenue streams',
       'Trust and safety features',
       'Growth-focused features',
+      'Operational insights for marketplace health',
     ],
     
-    caseStudies: ['b2b-marketplace', 'service-platform'],
+    hideCaseStudies: true,
+    hideFaq: true,
+    hideSecondaryCta: true,
   },
   {
     id: 'cloud-migration',
@@ -334,7 +346,7 @@ export const SOLUTIONS_DATA = [
       },
     ],
     
-    technologies: ['AWS', 'Azure', 'Google Cloud', 'Kubernetes', 'Docker', 'Terraform', 'CloudFormation'],
+    technologies: ['AWS', 'Azure', 'Google Cloud', 'Kubernetes', 'Docker', 'Terraform', 'CloudFormation', 'Prometheus', 'Grafana', 'Vault'],
     
     benefits: [
       'Reduce costs by 30-40%',
@@ -342,9 +354,12 @@ export const SOLUTIONS_DATA = [
       'Enhanced disaster recovery',
       'Better security',
       'Scale on demand',
+      'Faster release cycles post-migration',
     ],
     
-    caseStudies: ['aws-migration', 'hybrid-cloud'],
+    hideCaseStudies: true,
+    hideFaq: true,
+    hideSecondaryCta: true,
   },
 ];
 
