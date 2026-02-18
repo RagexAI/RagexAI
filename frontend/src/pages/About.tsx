@@ -15,12 +15,6 @@ const WHY_US = [
   { title: 'Transparent process', body: 'You get demos, roadmaps, and access to the team. No black-box delivery.' },
 ];
 
-const TIMELINE = [
-  { year: '2019', event: 'RagexAI founded. First enterprise AI engagement.' },
-  { year: '2020', event: 'Launched web and data practice. 20+ projects delivered.' },
-  { year: '2022', event: 'Opened second office. SOC 2 Type II certified.' },
-  { year: '2024', event: '150+ projects. Named top AI consultancy by industry analysts.' },
-];
 
 export default function About() {
   return (
@@ -34,11 +28,13 @@ export default function About() {
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-slate mb-6">Company story</h2>
             <p className="text-slate-muted leading-relaxed mb-4">
-              RagexAI started with a simple belief: the best software comes from teams that own strategy, architecture, and delivery end to end. We combined AI/ML expertise with enterprise web and data engineering so clients don't have to juggle multiple vendors or compromise on quality.
+              RagexAI was started by three friends who wanted to build real-world products that actually solve problems.
+
+We combine AI, web development, and data engineering to deliver smart, reliable, and production-ready solutions. As freelancers, we work closely with startups and growing businesses, handling everything from idea to final delivery.
+
+Our focus is simple — clear communication, clean code, and 100% practical solutions without unnecessary complexity.
             </p>
-            <p className="text-slate-muted leading-relaxed">
-              Today we work with funded startups and global brands across FinTech, Healthcare, Retail, and SaaS. We're known for clear communication, production-grade code, and a process that gets results without the usual enterprise drama.
-            </p>
+            
           </ScrollReveal>
         </div>
       </section>
@@ -90,33 +86,6 @@ export default function About() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-      <section className="py-section bg-section">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-slate mb-10">Company timeline</h2>
-          </ScrollReveal>
-          <div className="space-y-6">
-            {TIMELINE.map((item) => (
-              <ScrollReveal key={item.year}>
-                <div className="flex gap-6">
-                  <span className="font-bold text-accent w-14 shrink-0">{item.year}</span>
-                  <p className="text-slate-muted">{item.event}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-section bg-page border-t border-divider">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-slate mb-4">Awards & recognition</h2>
-            <p className="text-slate-muted max-w-2xl mx-auto">
-              SOC 2 Type II certified. Named a top AI consulting firm by industry analysts. 98% client retention.
-            </p>
-          </ScrollReveal>
         </div>
       </section>
       <section id="careers" className="py-section bg-slate">

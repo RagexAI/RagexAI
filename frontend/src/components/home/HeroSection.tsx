@@ -9,10 +9,10 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4">
-              AI-First Web Solutions Agency
+              Digital Product & AI Engineering Studio
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-heading leading-[1.1] tracking-tight">
-              We Build AI-First Digital Products That Scale Businesses
+             We Design and Build Scalable Digital Products from Idea to Launch
             </h1>
             <p className="mt-6 text-xl text-body max-w-xl leading-relaxed">
               Enterprise Web, Cloud & AI Solutions for Modern Companies
@@ -25,12 +25,7 @@ export default function HeroSection() {
                 Let's Build Together
                 <IconArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-heading rounded-xl border-2 border-border hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300"
-              >
-                Schedule Consultation
-              </Link>
+              
             </div>
           </div>
           {/* Animated UI preview - tech feel */}

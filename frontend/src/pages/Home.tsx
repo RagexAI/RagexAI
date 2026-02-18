@@ -6,7 +6,6 @@ import ServicesSection from '../components/home/ServicesSection';
 import SolutionsOverviewSection from '../components/home/SolutionsOverviewSection';
 import PortfolioPreviewSection from '../components/home/PortfolioPreviewSection';
 import IndustriesOverviewSection from '../components/home/IndustriesOverviewSection';
-import CaseStudySection from '../components/home/CaseStudySection';
 import WhyChooseUsSection from '../components/home/WhyChooseUsSection';
 import ProcessSection from '../components/home/ProcessSection';
 import CTASection from '../components/home/CTASection';
@@ -19,10 +18,9 @@ import CTASection from '../components/home/CTASection';
  * 4. Solutions Overview
  * 5. Portfolio Preview
  * 6. Industries We Serve
- * 7. Case Studies Preview
- * 8. Why Choose Us
- * 9. Process
- * 10. Final CTA
+ * 7. Why Choose Us
+ * 8. Process
+ * 9. Final CTA
  */
 export default function Home() {
   return (
@@ -34,7 +32,6 @@ export default function Home() {
       <SolutionsOverviewSection />
       <PortfolioPreviewSection />
       <IndustriesOverviewSection />
-      <CaseStudySection />
       <WhyChooseUsSection />
       <ProcessSection />
       <CTASection />
