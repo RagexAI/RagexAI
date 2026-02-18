@@ -4,9 +4,21 @@ import ScrollReveal from '../components/ui/ScrollReveal';
 import SectionTitle from '../components/ui/SectionTitle';
 
 const LEADERSHIP = [
-  { name: 'Alex Rivera', role: 'CEO & Co-founder', bio: 'Former VP Engineering at a global SaaS company. 15+ years building product and data teams.' },
-  { name: 'Jordan Kim', role: 'CTO & Co-founder', bio: 'Ex-ML lead at a Fortune 500. Focus on AI systems and scalable architecture.' },
-  { name: 'Sam Foster', role: 'Head of Delivery', bio: 'PMP, agile coach. Ensures projects ship on time and teams stay aligned.' },
+  { 
+    name: 'Sanuj Bhagat', 
+    role: 'CEO & Co-founder', 
+    bio: 'Intern at Rawyal with 1+ year of freelance experience delivering high-quality web and mobile products.' 
+  },
+  { 
+    name: 'Shrey Shukla', 
+    role: 'CTO & Co-founder', 
+    bio: 'Intern at Agoda and former intern at Heyev, focused on system architecture and performance-driven applications.' 
+  },
+  { 
+    name: 'Shagun Yadav', 
+    role: 'Lead Intern', 
+    bio: 'Intern at Candex AI, contributing to product execution and modern application development.' 
+  },
 ];
 
 const WHY_US = [

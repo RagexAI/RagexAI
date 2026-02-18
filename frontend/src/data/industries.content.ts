@@ -56,7 +56,7 @@ export const INDUSTRIES_DATA = [
       },
     ],
     
-    technologies: ['Shopify', 'WooCommerce', 'Magento', 'React', 'Node.js', 'AI/ML', 'AWS', 'Stripe'],
+    technologies: ['Shopify', 'WooCommerce', 'Magento', 'BigCommerce', 'React', 'Next.js', 'Node.js', 'Python', 'AI/ML', 'AWS', 'Stripe', 'Razorpay', 'ElasticSearch', 'Redis', 'Kafka'],
     
     caseStudies: [
       {
@@ -81,6 +81,7 @@ export const INDUSTRIES_DATA = [
       'Reduce operational costs',
       'Better customer insights',
       'Faster time to market',
+      'Scalable systems that handle peak demand',
     ],
     
     keyMetrics: [
@@ -141,7 +142,7 @@ export const INDUSTRIES_DATA = [
       },
     ],
     
-    technologies: ['FHIR', 'HL7', 'Python', 'TensorFlow', 'React', 'Node.js', 'AWS HIPAA', 'Blockchain'],
+    technologies: ['FHIR', 'HL7', 'Python', 'TensorFlow', 'PyTorch', 'React', 'Node.js', 'AWS HIPAA', 'PostgreSQL', 'Docker', 'Kubernetes', 'OpenAPI', 'Blockchain'],
     
     caseStudies: [
       {
@@ -166,6 +167,7 @@ export const INDUSTRIES_DATA = [
       'HIPAA compliant',
       'Better patient engagement',
       'Enhanced staff efficiency',
+      'Interoperable systems across care teams',
     ],
     
     keyMetrics: [
@@ -226,7 +228,7 @@ export const INDUSTRIES_DATA = [
       },
     ],
     
-    technologies: ['Blockchain', 'Node.js', 'Python', 'Kafka', 'PostgreSQL', 'Redis', 'AWS', 'AI/ML'],
+    technologies: ['Blockchain', 'Node.js', 'Python', 'Kafka', 'PostgreSQL', 'Redis', 'AWS', 'AI/ML', 'Stripe', 'React', 'Razorpay', 'Docker', 'Kubernetes', 'Snowflake', 'ElasticSearch'],
     
     caseStudies: [
       {
@@ -251,6 +253,7 @@ export const INDUSTRIES_DATA = [
       'Regulatory compliant',
       'Better customer experience',
       'Lower operational costs',
+      'Scalable systems for peak transaction loads',
     ],
     
     keyMetrics: [
@@ -311,7 +314,7 @@ export const INDUSTRIES_DATA = [
       },
     ],
     
-    technologies: ['React', 'Node.js', 'WebRTC', 'AI/ML', 'MongoDB', 'AWS', 'Zoom SDK', 'LTI'],
+    technologies: ['React', 'Next.js', 'Node.js', 'WebRTC', 'AI/ML', 'MongoDB', 'PostgreSQL', 'AWS', 'Zoom SDK', 'LTI', 'Docker', 'Redis'],
     
     caseStudies: [
       {
@@ -396,7 +399,7 @@ export const INDUSTRIES_DATA = [
       },
     ],
     
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Stripe', 'AWS', 'Docker', 'Kubernetes'],
+    technologies: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'Stripe', 'AWS', 'Docker', 'Kubernetes', 'Kafka', 'Segment'],
     
     caseStudies: [
       {
@@ -481,7 +484,7 @@ export const INDUSTRIES_DATA = [
       },
     ],
     
-    technologies: ['React', 'Node.js', 'Google Maps API', '3D.js', 'MongoDB', 'Stripe', 'AWS', 'ML'],
+    technologies: ['React', 'Next.js', 'Node.js', 'Google Maps API', '3D.js', 'MongoDB', 'PostgreSQL', 'Stripe', 'AWS', 'ML', 'PostGIS', 'Docker'],
     
     caseStudies: [
       {

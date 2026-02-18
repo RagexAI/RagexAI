@@ -44,8 +44,7 @@ const IndustryPageTemplate = ({ industry }: IndustryPageTemplateProps) => {
       <PageHero
         title={industry.title}
         subtitle={industry.description}
-        primaryCta={{ label: 'Discuss Your Project', href: '/contact' }}
-        secondaryCta={{ label: 'View Success Stories', href: '#case-studies' }}
+        primaryCta={{ label: 'Discuss Your Project', href: '/contact' }} 
       />
 
       {/* Key Metrics Section */}
@@ -157,52 +156,6 @@ const IndustryPageTemplate = ({ industry }: IndustryPageTemplateProps) => {
         </div>
       </section>
 
-      {/* Case Studies Section */}
-      <section id="case-studies" className="py-section bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Success Stories"
-            subtitle={`Real results from ${industry.name.toLowerCase()} clients`}
-          />
-          
-          <div className="space-y-8 mt-12">
-            {industry.caseStudies.map((study, index) => (
-              <Card key={index} padding="xl" shadow="lg">
-                <div className="grid md:grid-cols-5 gap-8">
-                  <div className="md:col-span-3">
-                    <h3 className="text-2xl font-bold text-heading mb-2">{study.title}</h3>
-                    <p className="text-primary font-semibold mb-6">{study.client}</p>
-                    
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-sm font-semibold text-accent mb-2">Challenge:</p>
-                        <p className="text-body">{study.challenge}</p>
-                      </div>
-                      
-                      <div>
-                        <p className="text-sm font-semibold text-accent mb-2">Solution:</p>
-                        <p className="text-body">{study.solution}</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="md:col-span-2">
-                    <p className="text-sm font-semibold text-accent mb-4">Results:</p>
-                    <div className="space-y-3">
-                      {study.results.map((result, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
-                          <span className="text-success text-xl">✓</span>
-                          <p className="text-lg font-semibold text-heading">{result}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Benefits Section */}
       <section className="py-section bg-surface">
@@ -237,9 +190,6 @@ const IndustryPageTemplate = ({ industry }: IndustryPageTemplateProps) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" to="/contact">
               Schedule a Consultation
-            </Button>
-            <Button variant="outline" size="lg" to="/case-studies" className="!text-white !border-white hover:!bg-white/10">
-              View More Case Studies
             </Button>
           </div>
         </div>

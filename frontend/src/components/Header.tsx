@@ -77,7 +77,7 @@ function AIFirstMegaMenu({ isOpen }: { isOpen: boolean }) {
   if (!isOpen) return null;
   return (
       <div className="fixed left-0 right-0 top-16 z-40 animate-menu-in">
-      <div className="glass border-b border-border/80 shadow-xl">
+      <div className="bg-surface/95 backdrop-blur-md border-b border-border/80 shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="grid grid-cols-3 gap-8">
             {Object.entries(AI_FIRST_ITEMS).map(([category, items]) => (
@@ -114,7 +114,7 @@ function Dropdown({
   if (!isOpen) return null;
   return (
     <div className="absolute left-0 top-full pt-1 z-50 min-w-[220px] animate-menu-in">
-      <div className="bg-surface border border-border rounded-lg shadow-lg py-2">
+      <div className="bg-surface/95 border border-border rounded-lg shadow-lg py-2">
         {items.map((item) => (
           <Link
             key={item.label}
