@@ -24,6 +24,9 @@ interface SolutionPageTemplateProps {
     }>;
     technologies: string[];
     benefits: string[];
+    hideCaseStudies?: boolean;
+    hideFaq?: boolean;
+    hideSecondaryCta?: boolean;
   };
   caseStudies?: Array<{
     id: string;
@@ -59,7 +62,7 @@ const SolutionPageTemplate = ({ solution, caseStudies }: SolutionPageTemplatePro
         title={solution.title}
         subtitle={solution.description}
         primaryCta={{ label: "Let's Connect", href: '/contact' }}
-        secondaryCta={{ label: 'View Case Studies', href: '/case-studies' }}
+        secondaryCta={!solution.hideSecondaryCta ? { label: 'View Case Studies', href: '/case-studies' } : undefined}
       />
 
       {/* Challenges Section */}
@@ -200,7 +203,7 @@ const SolutionPageTemplate = ({ solution, caseStudies }: SolutionPageTemplatePro
       </section>
 
       {/* Case Studies Section */}
-      {caseStudies && caseStudies.length > 0 && (
+      {!solution.hideCaseStudies && caseStudies && caseStudies.length > 0 && (
         <section className="py-section bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionTitle
@@ -224,18 +227,20 @@ const SolutionPageTemplate = ({ solution, caseStudies }: SolutionPageTemplatePro
       )}
 
       {/* FAQ Section */}
-      <section className="py-section bg-surface">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Frequently Asked Questions"
-            subtitle="Common questions about this solution"
-          />
-          
-          <div className="mt-12">
-            <Accordion items={faqs} />
+      {!solution.hideFaq && (
+        <section className="py-section bg-surface">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionTitle
+              title="Frequently Asked Questions"
+              subtitle="Common questions about this solution"
+            />
+            
+            <div className="mt-12">
+              <Accordion items={faqs} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-section bg-gradient-to-r from-primary to-secondary text-white">
