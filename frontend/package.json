@@ -2,7 +2,7 @@
   "name": "ragexai-frontend",
   "private": true,
   "type": "module",
-  "homepage": "https://ragexai.github.io/RagexAI",
+  "homepage": "https://ragexai.github.io/RagexAI-website",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
