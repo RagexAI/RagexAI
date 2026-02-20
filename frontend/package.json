@@ -2,10 +2,13 @@
   "name": "ragexai-frontend",
   "private": true,
   "type": "module",
+  "homepage": "https://ragexai.github.io/RagexAI-website",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^1.7.2",
@@ -19,6 +22,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.6.3",
     "vite": "^5.3.1"
