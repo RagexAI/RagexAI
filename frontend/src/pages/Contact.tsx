@@ -132,10 +132,10 @@ export default function Contact() {
               <div>
                 <h2 className="text-2xl font-bold text-slate mb-6">Office & contact</h2>
                 <div className="space-y-6 text-slate-muted">
-                  <p><strong className="text-slate">Email</strong><br /><a href="mailto:hello@ragexai.com" className="text-accent hover:text-accent-hover">hello@ragexai.com</a></p>
-                  <p><strong className="text-slate">Phone</strong><br />+1 (555) 123-4567</p>
-                  <p><strong className="text-slate">HQ</strong><br />San Francisco, CA</p>
-                  <p><strong className="text-slate">Other</strong><br />London · Remote teams globally</p>
+                  <p><strong className="text-slate">Email</strong><br /><a href="sanuj12201@gmail.com" className="text-accent hover:text-accent-hover">sanuj12201@gmail.com</a></p>
+                  <p><strong className="text-slate">Phone</strong><br />+91 9119175338</p>
+                  <p><strong className="text-slate">HQ</strong><br />Delhi</p>
+                  <p><strong className="text-slate">Other</strong><br />Remote teams globally</p>
                 </div>
                 <div className="mt-10">
                   <h3 className="font-semibold text-slate mb-3">FAQ quick links</h3>
