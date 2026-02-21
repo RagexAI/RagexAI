@@ -16,7 +16,7 @@ export const ROUTE_PATHS = {
   SERVICE_PAGE : "/services/:serviceId",
 
 
-  SOLUTIONS_PAGE: "/solutions/:solution",
+  SOLUTIONS_PAGE: "/solutions/:solutionId",
 
 
   INDUSTRIES: "/industries",
