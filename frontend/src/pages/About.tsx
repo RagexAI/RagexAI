@@ -99,7 +99,7 @@ export default function About() {
             <h2 className="t-h2 mb-6">Company Story</h2>
             <div className="space-y-4">
               <p className="t-body" style={{ color: 'var(--text-secondary)' }}>
-                RagexAI was started by three friends who wanted to build real-world products that actually solve problems.
+                RagexAI was started by four friends who wanted to build real-world products that actually solve problems.
               </p>
               <p className="t-body" style={{ color: 'var(--text-secondary)' }}>
                 We combine AI, web development, and data engineering to deliver smart, reliable, and production-ready solutions. As freelancers, we work closely with startups and growing businesses, handling everything from idea to final delivery.

@@ -4,6 +4,7 @@ export const ROUTE_PATHS = {
   PORTFOLIO: "/portfolio",
   CONTACT: "/contact",
 
+  AI_HOME: "/ai",
   CORE_AI: "/ai/core-ai",
   CORE_AI_DETAIL: "/ai/core-ai/:slug",
 

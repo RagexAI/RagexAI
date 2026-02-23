@@ -74,40 +74,49 @@ function MegaMenu({ isOpen, navbarTop, onItemClick }: { isOpen: boolean; navbarT
   if (!isOpen) return null;
   return (
     <div
-      className="fixed left-0 right-0 z-50"
+      className="fixed left-0 right-0 z-50 px-4"
       style={{ top: navbarTop, animation: 'slide-down-fade 0.22s cubic-bezier(.16,1,.3,1)' }}>
-      <div style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 20px 60px -10px rgba(0,0,0,0.1)' }}>
-        <div className="max-w-6xl mx-auto px-8 py-10">
-          <div className="grid grid-cols-3 gap-10">
+      <div
+        className="max-w-5xl mx-auto rounded-2xl overflow-hidden"
+        style={{
+          background: 'rgba(255,255,255,0.72)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255,255,255,0.5)',
+          boxShadow: '0 24px 64px -12px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04)',
+        }}>
+        <div className="px-8 py-8">
+          <div className="grid grid-cols-3 gap-8">
             {Object.entries(AI_FIRST_ITEMS).map(([category, items]) => (
               <div key={category}>
-                {/* Category label */}
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-5 flex items-center gap-2"
-                  style={{ color: '#1a56c4' }}>
-                  <span className="inline-block w-5 h-px" style={{ background: '#1a56c4' }} />
+                <p className="text-[11px] font-semibold uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: 'var(--blue)' }}>
+                  <span className="inline-block w-4 h-px rounded-full" style={{ background: 'var(--blue)' }} />
                   {category}
                 </p>
-                <ul className="space-y-px">
+                <ul className="space-y-0.5">
                   {items.map(item => (
                     <li key={item.label}>
-                      <Link to={item.href}
-                        className="group flex items-start gap-3 px-3 py-3 rounded-xl transition-all duration-150"
+                      <Link
+                        to={item.href}
                         onClick={onItemClick}
-                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'hsl(var(--color-primary) / 0.05)'; }}
-                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; }}>
-                        {/* Dot */}
-                        <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full transition-colors duration-150 group-hover:scale-125"
-                          style={{ background: '#c8d8e8' }}
-                          onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.background = '#1a56c4'; }}
-                          onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.background = ''; }} />
-                        <div>
-                          <div className="text-sm font-medium leading-snug transition-colors duration-150"
-                            style={{ color: 'var(--navy)' }}
-                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#1a56c4'; }}
-                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = ''; }}>
+                        className="group flex items-start gap-3 px-3 py-2.5 rounded-xl transition-all duration-200"
+                        style={{ color: 'inherit' }}
+                        onMouseEnter={e => {
+                          const t = e.currentTarget;
+                          t.style.background = 'rgba(26,86,196,0.06)';
+                          t.style.borderRadius = '12px';
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.background = '';
+                        }}>
+                        <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#c3d5e6] group-hover:bg-[var(--blue)] transition-colors duration-200" />
+                        <div className="min-w-0">
+                          <span className="block text-[13px] font-medium text-[#0f172a] group-hover:text-[var(--blue)] transition-colors duration-200 leading-snug">
                             {item.label}
-                          </div>
-                          <div className="text-xs mt-0.5" style={{ color: 'hsl(var(--color-body) / 0.55)' }}>{item.desc}</div>
+                          </span>
+                          <span className="block text-[12px] mt-0.5 text-[var(--text-secondary)] leading-snug">
+                            {item.desc}
+                          </span>
                         </div>
                       </Link>
                     </li>
@@ -117,18 +126,31 @@ function MegaMenu({ isOpen, navbarTop, onItemClick }: { isOpen: boolean; navbarT
             ))}
           </div>
 
-          {/* Bottom strip */}
-          <div className="mt-8 pt-6 flex items-center justify-between"
-            style={{ borderTop: '1px solid #d4e0ee' }}>
-            <span className="text-xs" style={{ color: 'hsl(var(--color-body) / 0.45)' }}>
-              Production-grade AI infrastructure • SOC 2 • GDPR • HIPAA
+          <div
+            className="mt-6 pt-5 flex items-center justify-between flex-wrap gap-4"
+            style={{ borderTop: '1px solid rgba(170,190,212,0.4)' }}>
+            <span className="text-[12px] text-[var(--text-muted)]">
+              Production-grade AI infrastructure · SOC 2 · GDPR · HIPAA
             </span>
-            <Link to="/ai"
-              className="group inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-60"
+            <Link
+              to="/ai"
               onClick={onItemClick}
-              style={{ color: '#1a56c4' }}>
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-200"
+              style={{
+                color: 'var(--blue)',
+                background: 'rgba(26,86,196,0.08)',
+                border: '1px solid rgba(26,86,196,0.18)',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(26,86,196,0.12)';
+                e.currentTarget.style.borderColor = 'rgba(26,86,196,0.28)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(26,86,196,0.08)';
+                e.currentTarget.style.borderColor = 'rgba(26,86,196,0.18)';
+              }}>
               View all AI capabilities
-              <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>

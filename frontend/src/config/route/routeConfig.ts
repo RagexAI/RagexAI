@@ -13,6 +13,7 @@ const Home = lazy(() => import("../../pages/Home"));
 const Portfolio = lazy(() => import("../../pages/Portfolio"));
 const Contact = lazy(() => import("../../pages/Contact"));
 
+const AIPage = lazy(() => import("../../pages/ai/AI"));
 const CoreAI = lazy(() => import("../../pages/ai/CoreAI"));
 const AgenticAI = lazy(() => import("../../pages/ai/AgenticAI"));
 const AISolutionsByIndustry = lazy(() => import("../../pages/ai/AISolutionsByIndustry"));
@@ -48,6 +49,7 @@ export const ROUTES: AppRoute[] = [
   { path: ROUTE_PATHS.CONTACT, component: Contact },
 
   /* AI First Routes */
+  { path: ROUTE_PATHS.AI_HOME, component: AIPage },
   { path: ROUTE_PATHS.CORE_AI, component: CoreAI },
   { path: ROUTE_PATHS.CORE_AI_DETAIL, component: CoreAI },
 
@@ -80,6 +82,7 @@ export const ROUTES: AppRoute[] = [
 
   { path: ROUTE_PATHS.BLOG, component: Blog },
   { path: ROUTE_PATHS.BLOG_ARTICLE, component: BlogArticle },
+
 
   /*Not Found Route */
   { path: ROUTE_PATHS.NOT_FOUND, component: NotFound }
