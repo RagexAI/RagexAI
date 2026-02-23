@@ -10,8 +10,8 @@ export const SERVICES_DATA = [
     title: 'E-commerce Development',
     shortDescription: 'Build scalable online stores that drive sales and deliver exceptional shopping experiences.',
     description: 'We create high-performing e-commerce platforms that convert visitors into customers. From custom storefronts to multi-vendor marketplaces, our solutions are built for growth.',
-    icon: '🛒',
-    image: '/images/services/ecommerce.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/ecommerce.jpg',
     
     problems: [
       'Low conversion rates and high cart abandonment',
@@ -65,8 +65,8 @@ export const SERVICES_DATA = [
     title: 'DevOps, Cloud & Security',
     shortDescription: 'Accelerate delivery with modern DevOps practices and secure cloud infrastructure.',
     description: 'Build, deploy, and scale with confidence. Our DevOps and cloud solutions ensure your applications are fast, reliable, and secure.',
-    icon: '☁️',
-    image: '/images/services/devops.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/devops.jpg',
     
     problems: [
       'Slow and manual deployment processes',
@@ -120,8 +120,8 @@ export const SERVICES_DATA = [
     title: 'Digital Transformation',
     shortDescription: 'Modernize legacy systems and transform business processes with cutting-edge technology.',
     description: 'We help organizations transition from outdated systems to modern, efficient digital solutions that drive growth and innovation.',
-    icon: '🚀',
-    image: '/images/services/transformation.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/transformation.jpg',
     
     problems: [
       'Outdated legacy systems holding back growth',
@@ -175,8 +175,8 @@ export const SERVICES_DATA = [
     title: 'Managed IT Services',
     shortDescription: 'Focus on your business while we manage your IT infrastructure and support.',
     description: 'Comprehensive IT management services that keep your systems running smoothly, securely, and efficiently.',
-    icon: '🛠️',
-    image: '/images/services/managed-it.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/managed-it.jpg',
     
     problems: [
       'IT issues disrupting business operations',
@@ -230,8 +230,8 @@ export const SERVICES_DATA = [
     title: 'AI/ML & Automation',
     shortDescription: 'Leverage artificial intelligence and machine learning to automate and optimize operations.',
     description: 'Build intelligent systems that learn, adapt, and automate complex tasks to drive efficiency and innovation.',
-    icon: '🤖',
-    image: '/images/services/ai-ml.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/ai-ml.jpg',
     
     problems: [
       'Manual, repetitive tasks consuming time',
@@ -285,8 +285,8 @@ export const SERVICES_DATA = [
     title: 'Web & Mobile Development',
     shortDescription: 'Create beautiful, high-performance web and mobile applications that users love.',
     description: 'From responsive websites to native mobile apps, we build digital products that deliver exceptional user experiences.',
-    icon: '📱',
-    image: '/images/services/web-mobile.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/web-mobile.jpg',
     
     problems: [
       'Poor user experience and engagement',
@@ -340,8 +340,8 @@ export const SERVICES_DATA = [
     title: 'SaaS Product Development',
     shortDescription: 'Build scalable SaaS products from concept to launch and beyond.',
     description: 'We help startups and enterprises build cloud-based SaaS products that scale, monetize, and delight users.',
-    icon: '💼',
-    image: '/images/services/saas.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/services/saas.jpg',
     
     problems: [
       'Turning ideas into market-ready products',

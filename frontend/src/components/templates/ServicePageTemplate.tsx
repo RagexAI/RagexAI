@@ -1,18 +1,24 @@
-import PageHero from '../shared/PageHero';
-import Card from '../ui/Card';
-import Button from '../ui/Button';
-import SectionTitle from '../ui/SectionTitle';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-/**
- * Service Page Template
- * Reusable template for all service pages following consistent structure
- */
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.08, ease: 'easeOut' as const },
+  }),
+};
+
+const stagger = {
+  visible: { transition: { staggerChildren: 0.08 } },
+};
 
 interface ServicePageTemplateProps {
   service: {
     title: string;
     description: string;
     icon: string;
+    image?: string;
     problems: string[];
     approach: string[];
     features: string[];
@@ -30,137 +36,170 @@ interface ServicePageTemplateProps {
 const ServicePageTemplate = ({ service }: ServicePageTemplateProps) => {
   return (
     <>
-      {/* Hero Section */}
-      <PageHero
-        title={service.title}
-        subtitle={service.description}
-        primaryCta={{ label: "Let's Build Together", href: '/contact' }}
-        secondaryCta={{ label: 'View Portfolio', href: '/case-studies' }}
-      />
-
-      {/* Problems Section */}
-      <section className="py-section bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Challenges We Solve"
-            subtitle="Common problems businesses face that we help overcome"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {service.problems.map((problem, index) => (
-              <Card key={index} padding="lg" hover>
-                <div className="flex items-start gap-4">
-                  <span className="text-2xl">❌</span>
-                  <p className="text-body">{problem}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
+      {/* Hero */}
+      <section className="relative overflow-hidden" style={{ paddingTop: 120, paddingBottom: 80 }}>
+        <div className="container relative" style={{ zIndex: 2 }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-6">
+            <span className="eyebrow">
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--blue)', display: 'inline-block' }} />
+              Services
+            </span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="t-h1 text-center" style={{ maxWidth: 800, margin: '0 auto' }}>
+            {service.title}
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.16 }} className="t-body text-center mx-auto mt-5" style={{ maxWidth: 600, color: 'var(--text-secondary)' }}>
+            {service.description}
+          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.24 }} className="flex flex-wrap items-center justify-center gap-4 mt-10">
+            <Link to="/contact" className="btn-primary">
+              Let's Build Together
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
+            <Link to="/portfolio" className="btn-outline">View Portfolio</Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Approach Section */}
-      <section className="py-section bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Our Approach"
-            subtitle="How we deliver exceptional results"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {service.approach.map((item, index) => (
-              <Card key={index} padding="lg" border>
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
-                    {index + 1}
-                  </div>
-                  <p className="text-body font-medium">{item}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-section bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Features We Build"
-            subtitle="Comprehensive features tailored to your needs"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
-            {service.features.map((feature, index) => (
-              <Card key={index} padding="md" hover border>
-                <div className="flex items-center gap-3">
-                  <span className="text-accent">✓</span>
-                  <p className="text-sm text-body">{feature}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack Section */}
-      <section className="py-section bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Technology Stack"
-            subtitle="Modern, proven technologies we use"
-          />
-          
-          <div className="flex flex-wrap justify-center gap-4 mt-12">
-            {service.technologies.map((tech, index) => (
-              <div
-                key={index}
-                className="px-6 py-3 bg-background border border-border rounded-lg text-heading font-medium"
-              >
-                {tech}
+      {/* Hero Image */}
+      {service.image && (
+        <section className="section-sm">
+          <div className="container">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <div className="glass-image">
+                <img src={service.image as string} alt={service.title} className="w-full h-72 lg:h-96 object-cover" loading="lazy" />
               </div>
-            ))}
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Benefits Section */}
-      <section className="py-section bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            title="Benefits & Results"
-            subtitle="Measurable impact on your business"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {service.benefits.map((benefit, index) => (
-              <Card key={index} padding="lg" shadow="md">
+      {/* Challenges We Solve */}
+      <section className="section">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <h2 className="t-h2">Challenges We Solve</h2>
+            <p className="t-body mx-auto mt-4" style={{ maxWidth: 520, color: 'var(--text-secondary)' }}>Common problems businesses face that we help overcome</p>
+          </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.problems.map((problem, i) => (
+              <motion.div key={i} custom={i} variants={fadeUp} className="glass-card p-7">
                 <div className="flex items-start gap-4">
-                  <span className="text-3xl">{service.icon}</span>
-                  <p className="text-lg text-heading font-semibold">{benefit}</p>
+                  <span style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                    <svg className="w-3.5 h-3.5" style={{ color: '#ef4444' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                  </span>
+                  <p className="t-body" style={{ fontSize: 15 }}>{problem}</p>
                 </div>
-              </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Approach */}
+      <section className="section">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <h2 className="t-h2">Our Approach</h2>
+            <p className="t-body mx-auto mt-4" style={{ maxWidth: 520, color: 'var(--text-secondary)' }}>How we deliver exceptional results</p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {service.approach.map((item, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="relative">
+                <div className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold mb-5" style={{ background: 'rgba(26,86,196,0.10)', border: '1px solid rgba(26,86,196,0.15)', color: 'var(--blue)' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                {i < service.approach.length - 1 && i % 3 !== 2 && <div className="step-connector hidden lg:block" />}
+                <p className="t-h3">{item}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Features */}
+      <section className="section">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <h2 className="t-h2">Features We Build</h2>
+            <p className="t-body mx-auto mt-4" style={{ maxWidth: 520, color: 'var(--text-secondary)' }}>Comprehensive features tailored to your needs</p>
+          </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {service.features.map((feature, i) => (
+              <motion.div key={i} custom={i} variants={fadeUp} className="glass-card-sm p-5">
+                <div className="flex items-center gap-3">
+                  <span style={{ width: 20, height: 20, borderRadius: 6, background: 'rgba(5,150,105,0.10)', border: '1px solid rgba(5,150,105,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg className="w-3 h-3" style={{ color: '#059669' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                  </span>
+                  <p className="t-small" style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{feature}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-      {/* CTA Section */}
-      <section className="py-section bg-primary text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Let's discuss how {service.title.toLowerCase()} can transform your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" to="/contact">
-              Schedule a Consultation
-            </Button>
-            <Button variant="outline" size="lg" to="/case-studies" className="!text-white !border-white hover:!bg-white/10">
-              View Our Work
-            </Button>
-          </div>
+      {/* Technology Stack */}
+      <section className="section">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <h2 className="t-h2">Technology Stack</h2>
+            <p className="t-body mx-auto mt-4" style={{ maxWidth: 520, color: 'var(--text-secondary)' }}>Modern, proven technologies we use</p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <div className="glass-card-sm p-8">
+              <div className="flex flex-wrap justify-center gap-3">
+                {service.technologies.map((tech, i) => (
+                  <motion.span key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.04 }} className="tag">
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="section">
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <h2 className="t-h2">Benefits & Results</h2>
+            <p className="t-body mx-auto mt-4" style={{ maxWidth: 520, color: 'var(--text-secondary)' }}>Measurable impact on your business</p>
+          </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.benefits.map((benefit, i) => (
+              <motion.div key={i} custom={i} variants={fadeUp} className="glass-card p-7">
+                <div className="flex items-start gap-4">
+                  <div className="icon-box">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                  <p className="t-h3">{benefit}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-sm">
+        <div className="container" style={{ maxWidth: 700 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="glass-card p-12 text-center">
+            <h2 className="t-h2 mb-4">Ready to Get Started?</h2>
+            <p className="t-body mx-auto mb-8" style={{ maxWidth: 480, color: 'var(--text-secondary)' }}>
+              Let us discuss how {service.title.toLowerCase()} can transform your business.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link to="/contact" className="btn-primary">
+                Schedule a Consultation
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+              <Link to="/portfolio" className="btn-outline">View Our Work</Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>

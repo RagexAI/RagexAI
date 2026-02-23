@@ -1,36 +1,23 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import { ROUTE_PATHS } from "../config/route/routes";
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ROUTE_PATHS } from '../config/route/routes';
 
-const NotFound: FC = () => {
+export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-white px-6">
-
-      <div className="text-center">
-
-        <h1 className="text-8xl md:text-9xl font-bold text-black tracking-tight">
-          404
-        </h1>
-
-        <h2 className="mt-4 text-xl md:text-2xl font-semibold text-gray-900">
-          Page Not Found
-        </h2>
-
-        <p className="mt-2 text-sm md:text-base text-gray-500 max-w-md mx-auto">
-          Sorry, the page you are looking for doesn’t exist or has been moved.
-        </p>
-
-        <Link
-          to={ROUTE_PATHS.HOME}
-          className="inline-flex items-center justify-center mt-6 px-6 py-3 text-sm font-medium text-white bg-black rounded-lg hover:bg-gray-800 transition-colors duration-200"
-        >
-          Go back home
-        </Link>
-
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="container" style={{ maxWidth: 500, textAlign: 'center' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <p className="stat-number" style={{ fontSize: 80, marginBottom: 8 }}>404</p>
+          <h1 className="t-h2 mb-3">Page Not Found</h1>
+          <p className="t-body mb-8" style={{ color: 'var(--text-secondary)' }}>
+            Sorry, the page you are looking for doesn't exist or has been moved.
+          </p>
+          <Link to={ROUTE_PATHS.HOME} className="btn-primary">
+            Go Back Home
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
+        </motion.div>
       </div>
-
     </div>
   );
-};
-
-export default NotFound;
+}

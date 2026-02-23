@@ -9,47 +9,47 @@ export const CAPABILITIES = [
   {
     title: 'AI Engineering',
     description: 'Custom models, ML pipelines, and intelligent systems that automate decisions and unlock new revenue streams.',
-    icon: '🤖',
+    icon: '',
     href: '/solutions/ai',
   },
   {
     title: 'SaaS Platforms',
     description: 'Multi-tenant, scalable SaaS products with subscription billing, analytics, and enterprise security.',
-    icon: '🌐',
+    icon: '',
     href: '/solutions/web',
   },
   {
     title: 'Enterprise Systems',
     description: 'Integration-heavy platforms that connect legacy systems with modern APIs and workflows.',
-    icon: '🏢',
+    icon: '',
     href: '/solutions/web',
   },
   {
     title: 'Cloud & DevOps',
     description: 'Infrastructure as code, CI/CD, and observability so your systems scale and recover predictably.',
-    icon: '☁️',
+    icon: '',
     href: '/solutions/web',
   },
   {
     title: 'Data Intelligence',
     description: 'Data pipelines, warehouses, and BI that turn raw data into actionable insights and reporting.',
-    icon: '📊',
+    icon: '',
     href: '/solutions/ai',
   },
   {
     title: 'UX Engineering',
     description: 'Design systems and front-end architecture that keep experiences consistent and performant.',
-    icon: '✨',
+    icon: '',
     href: '/solutions/web',
   },
 ];
 
 export const PROCESS_STEPS = [
-  { title: 'Discovery & Strategy', body: 'We align on goals, scope, success metrics, and technical constraints. No build begins without a clear North Star.', icon: '🔍' },
-  { title: 'Architecture Design', body: 'System design, data models, and integration blueprints. We choose stack and patterns that fit your scale and team.', icon: '📐' },
-  { title: 'Agile Development', body: 'Sprint-based delivery with demos and feedback loops. You see progress every two weeks and steer as needed.', icon: '⚡' },
-  { title: 'QA & Optimization', body: 'Automated testing, performance profiling, and security review. We harden before launch.', icon: '✅' },
-  { title: 'Scale & Support', body: 'Launch, monitor, and iterate. We stay available for scaling, incidents, and the next phase.', icon: '🚀' },
+  { title: 'Discovery & Strategy', body: 'We align on goals, scope, success metrics, and technical constraints. No build begins without a clear North Star.', icon: '' },
+  { title: 'Architecture Design', body: 'System design, data models, and integration blueprints. We choose stack and patterns that fit your scale and team.', icon: '' },
+  { title: 'Agile Development', body: 'Sprint-based delivery with demos and feedback loops. You see progress every two weeks and steer as needed.', icon: '' },
+  { title: 'QA & Optimization', body: 'Automated testing, performance profiling, and security review. We harden before launch.', icon: '' },
+  { title: 'Scale & Support', body: 'Launch, monitor, and iterate. We stay available for scaling, incidents, and the next phase.', icon: '' },
 ];
 
 export const FEATURED_CASE_STUDY = {

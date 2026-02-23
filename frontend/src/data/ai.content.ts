@@ -1,203 +1,860 @@
 /**
- * AI First Content Data
- * Contains all content for Core AI, Agentic AI, and AI Solutions
+ * AI Content Data
+ * Contains all content for Core AI, Agentic AI, and AI Solutions detail pages.
+ * Each service has full page content: hero, overview, features, process, use cases, tech stack, stats, and FAQ.
  */
 
-// Core AI Services
-export const CORE_AI_SERVICES = [
+export interface AIServiceDetail {
+  id: string;
+  title: string;
+  shortDescription: string;
+  heroImage: string;
+  contentImage: string;
+  hero: {
+    titlePrefix: string;
+    titleHighlight: string;
+    titleSuffix: string;
+    subtitle: string;
+  };
+  overview: {
+    title: string;
+    paragraphs: string[];
+  };
+  features: {
+    title: string;
+    subtitle: string;
+    items: { title: string; description: string }[];
+  };
+  process: {
+    title: string;
+    subtitle: string;
+    steps: { title: string; description: string }[];
+  };
+  useCases: {
+    title: string;
+    subtitle: string;
+    items: { title: string; description: string; metrics: string[] }[];
+  };
+  techStack: {
+    title: string;
+    subtitle: string;
+    categories: { title: string; items: string[] }[];
+  };
+  stats: { value: string; label: string }[];
+  faq: {
+    title: string;
+    items: { question: string; answer: string }[];
+  };
+}
+
+// ─── Core AI Services ────────────────────────────────────────
+
+export const CORE_AI_SERVICES: AIServiceDetail[] = [
   {
     id: 'custom-ai-models',
     title: 'Custom AI Model Development',
-    description: 'Build tailored AI models designed specifically for your business needs and data.',
-    icon: '🧠',
-    features: [
-      'Domain-specific model training',
-      'Transfer learning implementation',
-      'Model optimization & fine-tuning',
-      'Performance monitoring & iteration',
+    shortDescription: 'Build tailored AI models designed specifically for your business needs and data.',
+    heroImage: '/RagexAI-website/images/ai/core-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/core/custom-ai-models.jpg',
+    hero: {
+      titlePrefix: 'Custom',
+      titleHighlight: 'AI Model',
+      titleSuffix: 'Development for Your Domain',
+      subtitle: 'Fine-tuned large language models and machine learning systems built on your data, optimized for your workflows, and deployed to production with enterprise-grade reliability.',
+    },
+    overview: {
+      title: 'Why Custom AI Models Outperform Off-the-Shelf Solutions',
+      paragraphs: [
+        'Generic AI models are trained on general-purpose data and optimized for broad applicability. They work well for demos but fall short when your business needs precision, compliance, or domain-specific understanding. Custom models close that gap.',
+        'We build AI models from the ground up or fine-tune existing foundation models on your proprietary data. The result is a system that understands your industry terminology, business rules, and edge cases in ways that no off-the-shelf product can match.',
+        'From initial data assessment through deployment and monitoring, our team handles the full model lifecycle so you get production-ready AI without the overhead of building an internal ML team from scratch.',
+      ],
+    },
+    features: {
+      title: 'Custom AI Model Capabilities',
+      subtitle: 'End-to-end model development tailored to your business requirements.',
+      items: [
+        { title: 'Domain-Specific Fine-Tuning', description: 'Adapt foundation models like GPT, LLaMA, or Mistral to your industry vocabulary, document formats, and decision patterns for dramatically improved accuracy.' },
+        { title: 'Transfer Learning', description: 'Leverage pre-trained models and apply them to your specific use case, reducing training time and data requirements while maintaining high performance.' },
+        { title: 'Model Optimization', description: 'Compress and optimize models for your deployment environment, whether that is cloud inference, edge devices, or on-premise servers with strict latency requirements.' },
+        { title: 'Continuous Learning Pipelines', description: 'Build automated retraining pipelines that keep your models accurate as data distributions shift and business requirements evolve over time.' },
+        { title: 'Evaluation and Testing', description: 'Rigorous model evaluation with custom benchmarks, A/B testing frameworks, and bias detection to ensure reliable, fair outputs in production.' },
+        { title: 'MLOps Infrastructure', description: 'Production-grade deployment with model versioning, rollback capabilities, monitoring dashboards, and alerting for performance degradation.' },
+      ],
+    },
+    process: {
+      title: 'Our Model Development Process',
+      subtitle: 'A structured approach from data assessment to production deployment.',
+      steps: [
+        { title: 'Data Assessment', description: 'We audit your data sources, assess quality, identify gaps, and define the minimum viable dataset needed for your use case.' },
+        { title: 'Architecture Selection', description: 'Based on your requirements, we select the optimal model architecture, training strategy, and infrastructure configuration.' },
+        { title: 'Training and Validation', description: 'We train models iteratively, using cross-validation and custom benchmarks to ensure performance meets your acceptance criteria.' },
+        { title: 'Deployment and Monitoring', description: 'Models are containerized, deployed behind secure APIs, and instrumented with real-time monitoring and automated alerting.' },
+      ],
+    },
+    useCases: {
+      title: 'Custom AI Models in Action',
+      subtitle: 'Real-world applications across industries and use cases.',
+      items: [
+        { title: 'Legal Document Analysis', description: 'A legal technology firm deployed a fine-tuned model for contract review that identifies risk clauses, missing provisions, and compliance gaps across thousands of documents daily.', metrics: ['85% reduction in review time', '97% accuracy on clause extraction', '40% lower legal spend'] },
+        { title: 'Manufacturing Quality Control', description: 'A manufacturing company uses a custom vision model to detect defects on production lines in real time, replacing manual inspection with automated, consistent quality assurance.', metrics: ['99.2% defect detection rate', '60% fewer false positives', '24/7 automated inspection'] },
+        { title: 'Financial Risk Scoring', description: 'A lending platform built a custom credit model trained on alternative data sources, enabling more accurate risk assessment for thin-file applicants who lack traditional credit history.', metrics: ['30% more approvals', '15% lower default rate', 'Sub-second scoring'] },
+      ],
+    },
+    techStack: {
+      title: 'Technology Stack',
+      subtitle: 'Industry-leading tools and frameworks for custom model development.',
+      categories: [
+        { title: 'ML Frameworks', items: ['PyTorch', 'TensorFlow', 'Hugging Face Transformers', 'JAX'] },
+        { title: 'Training Infrastructure', items: ['AWS SageMaker', 'Google Vertex AI', 'NVIDIA GPUs', 'Distributed Training'] },
+        { title: 'Model Serving', items: ['TensorRT', 'vLLM', 'Triton Inference Server', 'FastAPI'] },
+        { title: 'MLOps', items: ['MLflow', 'Weights & Biases', 'DVC', 'Kubeflow'] },
+        { title: 'Data Processing', items: ['Apache Spark', 'Pandas', 'Polars', 'dbt'] },
+        { title: 'Monitoring', items: ['Prometheus', 'Grafana', 'Evidently AI', 'Great Expectations'] },
+      ],
+    },
+    stats: [
+      { value: '150+', label: 'Models Deployed' },
+      { value: '99.5%', label: 'Average Uptime' },
+      { value: '3x', label: 'Faster Than In-House' },
+      { value: '40%', label: 'Cost Reduction' },
     ],
-    technologies: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Hugging Face'],
-    useCases: [
-      'Industry-specific classification',
-      'Custom recommendation engines',
-      'Specialized prediction models',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'How much data do we need to build a custom model?', answer: 'It depends on the task complexity. For fine-tuning LLMs, a few hundred high-quality examples can be sufficient. For training from scratch, we typically need thousands to millions of labeled samples. We assess your data during discovery and recommend the best approach.' },
+        { question: 'How long does custom model development take?', answer: 'A typical engagement runs 8 to 16 weeks from kickoff to production deployment. Simple fine-tuning projects can ship in 4 to 6 weeks. We define milestones and deliverables upfront so you have clear visibility into progress.' },
+        { question: 'Can you work with our existing data infrastructure?', answer: 'Yes. We integrate with your data warehouses, lakes, and pipelines. We support major cloud providers and can work with on-premise environments when required for security or compliance reasons.' },
+        { question: 'How do you handle model updates and drift?', answer: 'We build automated monitoring that detects performance degradation and data drift. Retraining pipelines can be triggered automatically or on a schedule, with human review gates before production deployment.' },
+        { question: 'What about data privacy and security?', answer: 'We follow secure development practices including data encryption, access controls, and audit logging. For sensitive industries, we can train models entirely within your infrastructure so data never leaves your environment.' },
+      ],
+    },
   },
   {
     id: 'nlp-solutions',
     title: 'Natural Language Processing',
-    description: 'Extract insights and automate text processing with advanced NLP solutions.',
-    icon: '💬',
-    features: [
-      'Text classification & sentiment analysis',
-      'Named entity recognition',
-      'Language translation',
-      'Document summarization',
+    shortDescription: 'Extract insights and automate text processing with advanced NLP solutions.',
+    heroImage: '/RagexAI-website/images/ai/core-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/core/nlp-solutions.jpg',
+    hero: {
+      titlePrefix: 'Advanced',
+      titleHighlight: 'NLP Solutions',
+      titleSuffix: 'for Text Intelligence',
+      subtitle: 'Transform unstructured text into structured insights with natural language processing systems that understand context, intent, and nuance at scale.',
+    },
+    overview: {
+      title: 'Turn Unstructured Text into Actionable Intelligence',
+      paragraphs: [
+        'Over 80% of enterprise data is unstructured text: emails, contracts, support tickets, reviews, reports, and more. Most of it sits untouched because traditional software cannot understand natural language. NLP changes that equation.',
+        'Our NLP solutions go beyond keyword matching. We build systems that understand semantic meaning, detect sentiment, extract entities, summarize documents, and generate human-quality text tailored to your brand voice and compliance requirements.',
+        'Whether you need to automate document processing, build intelligent search, or create conversational interfaces, our NLP engineering team delivers production-grade systems that handle the complexity and scale of real-world text data.',
+      ],
+    },
+    features: {
+      title: 'NLP Capabilities',
+      subtitle: 'Comprehensive text intelligence for every business need.',
+      items: [
+        { title: 'Text Classification and Sentiment', description: 'Automatically categorize documents, emails, and feedback by topic, intent, or sentiment with high accuracy across multiple languages.' },
+        { title: 'Named Entity Recognition', description: 'Extract people, organizations, dates, monetary values, and custom entities from unstructured text with configurable confidence thresholds.' },
+        { title: 'Document Summarization', description: 'Generate concise, accurate summaries of long documents, meeting transcripts, and research papers while preserving key information.' },
+        { title: 'Semantic Search', description: 'Build search systems that understand meaning, not just keywords, returning relevant results even when queries use different terminology.' },
+        { title: 'Language Translation', description: 'Deploy neural machine translation models optimized for your domain terminology, supporting dozens of language pairs with enterprise accuracy.' },
+        { title: 'Text Generation and Editing', description: 'Create content generation systems with guardrails for brand consistency, factual accuracy, and regulatory compliance.' },
+      ],
+    },
+    process: {
+      title: 'NLP Development Process',
+      subtitle: 'From raw text data to production NLP systems.',
+      steps: [
+        { title: 'Corpus Analysis', description: 'We analyze your text data to understand language patterns, vocabulary, and the specific challenges your NLP system needs to solve.' },
+        { title: 'Model Selection', description: 'We choose the right approach: fine-tuned LLMs, traditional ML, or hybrid architectures based on your accuracy, latency, and cost requirements.' },
+        { title: 'Training and Evaluation', description: 'Models are trained on your data with rigorous evaluation against domain-specific benchmarks and edge cases you define.' },
+        { title: 'Integration and Scaling', description: 'NLP models are deployed as APIs, integrated into your workflows, and scaled to handle your document volume with consistent performance.' },
+      ],
+    },
+    useCases: {
+      title: 'NLP Solutions in Production',
+      subtitle: 'How organizations use NLP to automate and scale text intelligence.',
+      items: [
+        { title: 'Customer Feedback Analysis', description: 'A SaaS company processes 50,000 support tickets monthly using NLP to automatically categorize issues, detect urgency, route tickets, and surface product insights for the engineering team.', metrics: ['70% faster ticket routing', '3x more insights surfaced', '25% reduction in escalations'] },
+        { title: 'Contract Intelligence', description: 'A corporate legal department uses NLP to extract key terms, obligations, and renewal dates from thousands of vendor contracts, eliminating manual review and reducing compliance risk.', metrics: ['90% extraction accuracy', '80% less manual review', 'Real-time risk alerts'] },
+        { title: 'Multilingual Content Moderation', description: 'A social platform deploys NLP models to moderate user-generated content across 12 languages, detecting harmful content, spam, and policy violations with human-level accuracy.', metrics: ['99.1% detection accuracy', '12 languages supported', 'Sub-200ms latency'] },
+      ],
+    },
+    techStack: {
+      title: 'NLP Technology Stack',
+      subtitle: 'State-of-the-art tools for text intelligence at scale.',
+      categories: [
+        { title: 'Language Models', items: ['GPT-4 / GPT-4o', 'Claude', 'LLaMA 3', 'Mistral'] },
+        { title: 'NLP Libraries', items: ['Hugging Face', 'spaCy', 'LangChain', 'NLTK'] },
+        { title: 'Vector Databases', items: ['Pinecone', 'Weaviate', 'Qdrant', 'pgvector'] },
+        { title: 'Search', items: ['Elasticsearch', 'OpenSearch', 'Typesense', 'Meilisearch'] },
+        { title: 'Data Processing', items: ['Apache Spark', 'Airflow', 'Prefect', 'dbt'] },
+        { title: 'Deployment', items: ['Docker', 'Kubernetes', 'FastAPI', 'gRPC'] },
+      ],
+    },
+    stats: [
+      { value: '200M+', label: 'Documents Processed' },
+      { value: '95%+', label: 'Average Accuracy' },
+      { value: '30+', label: 'Languages Supported' },
+      { value: '50ms', label: 'Average Latency' },
     ],
-    technologies: ['GPT-4', 'BERT', 'spaCy', 'NLTK'],
-    useCases: [
-      'Customer feedback analysis',
-      'Automated content generation',
-      'Chatbot development',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'Can NLP handle domain-specific terminology?', answer: 'Yes. We fine-tune models on your specific vocabulary and document types. Industry jargon, abbreviations, and technical terms are learned during training so the system understands your language precisely.' },
+        { question: 'How do you handle multiple languages?', answer: 'We use multilingual models that support 100+ languages and can be fine-tuned for specific language pairs. For critical languages, we build dedicated models with higher accuracy.' },
+        { question: 'What accuracy should we expect?', answer: 'Accuracy depends on the task and data quality. For well-defined tasks like entity extraction, we typically achieve 90-98% accuracy. We set clear benchmarks during discovery and iterate until targets are met.' },
+        { question: 'Can NLP integrate with our existing document management system?', answer: 'Yes. We build NLP as API services that integrate with any system via REST or gRPC. Common integrations include SharePoint, Confluence, Salesforce, and custom platforms.' },
+      ],
+    },
   },
   {
     id: 'computer-vision',
     title: 'Computer Vision',
-    description: 'Enable machines to understand and interpret visual information from the world.',
-    icon: '👁️',
-    features: [
-      'Object detection & recognition',
-      'Image classification',
-      'Facial recognition',
-      'Video analytics',
+    shortDescription: 'Enable machines to understand and interpret visual information from the world.',
+    heroImage: '/RagexAI-website/images/ai/core-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/core/computer-vision.jpg',
+    hero: {
+      titlePrefix: 'Intelligent',
+      titleHighlight: 'Computer Vision',
+      titleSuffix: 'Systems That See and Understand',
+      subtitle: 'Deploy production-grade vision AI for object detection, image classification, video analytics, and visual inspection across any industry.',
+    },
+    overview: {
+      title: 'Visual Intelligence for the Real World',
+      paragraphs: [
+        'Computer vision enables machines to interpret and act on visual data: images, video feeds, documents, and satellite imagery. When applied correctly, it automates inspection, monitoring, and analysis tasks that previously required human eyes.',
+        'Our computer vision solutions handle the complexity of real-world visual data, including variable lighting, occlusions, motion blur, and domain-specific object types. We build systems that work reliably in production, not just in controlled lab conditions.',
+        'From manufacturing quality control to medical imaging to autonomous navigation, we deliver vision models that are accurate, fast, and deployable on the hardware your operations require, whether that is cloud GPUs, edge devices, or embedded systems.',
+      ],
+    },
+    features: {
+      title: 'Computer Vision Capabilities',
+      subtitle: 'Full-spectrum visual intelligence for enterprise applications.',
+      items: [
+        { title: 'Object Detection and Tracking', description: 'Detect, classify, and track objects in images and video streams with bounding boxes, segmentation masks, and trajectory predictions in real time.' },
+        { title: 'Image Classification', description: 'Categorize images into custom classes with fine-grained accuracy, supporting multi-label classification for complex visual scenarios.' },
+        { title: 'Optical Character Recognition', description: 'Extract text from images, scanned documents, receipts, and handwritten notes with layout-aware OCR that preserves document structure.' },
+        { title: 'Video Analytics', description: 'Analyze video feeds for activity recognition, anomaly detection, crowd monitoring, and event classification at scale across multiple camera streams.' },
+        { title: 'Medical Image Analysis', description: 'Build diagnostic assistance tools for radiology, pathology, and dermatology with models trained on clinical datasets and validated against medical benchmarks.' },
+        { title: 'Visual Inspection and Quality Control', description: 'Automate defect detection on production lines with sub-millimeter precision, handling surface scratches, dimensional deviations, and assembly errors.' },
+      ],
+    },
+    process: {
+      title: 'Vision AI Development Process',
+      subtitle: 'From image data to production-ready visual intelligence.',
+      steps: [
+        { title: 'Visual Data Audit', description: 'We assess your image and video data, define labeling requirements, and establish quality standards for training data.' },
+        { title: 'Model Architecture', description: 'We select and customize vision architectures optimized for your specific detection, classification, or segmentation requirements.' },
+        { title: 'Training and Testing', description: 'Models are trained with augmentation strategies and tested against real-world conditions including edge cases and failure modes.' },
+        { title: 'Edge or Cloud Deployment', description: 'Optimized models are deployed to your target environment with real-time inference, monitoring, and continuous improvement pipelines.' },
+      ],
+    },
+    useCases: {
+      title: 'Computer Vision in Production',
+      subtitle: 'Real implementations solving real problems.',
+      items: [
+        { title: 'Automated Quality Inspection', description: 'An electronics manufacturer uses vision AI to inspect circuit boards at 200 units per minute, detecting soldering defects, missing components, and alignment issues that human inspectors consistently miss.', metrics: ['99.4% detection accuracy', '200 units/minute throughput', '75% fewer defective shipments'] },
+        { title: 'Retail Shelf Analytics', description: 'A retail chain deploys cameras with vision AI to monitor shelf stock levels, planogram compliance, and competitor product placement across 500 stores in real time.', metrics: ['Real-time stock alerts', '500 stores monitored', '15% reduction in out-of-stock'] },
+        { title: 'Construction Site Safety', description: 'A construction company uses video analytics to monitor PPE compliance, detect unsafe behaviors, and track equipment location across multiple job sites automatically.', metrics: ['90% reduction in safety incidents', '24/7 automated monitoring', 'Multi-site coverage'] },
+      ],
+    },
+    techStack: {
+      title: 'Vision AI Technology Stack',
+      subtitle: 'High-performance tools for visual intelligence.',
+      categories: [
+        { title: 'Vision Frameworks', items: ['PyTorch', 'TensorFlow', 'OpenCV', 'torchvision'] },
+        { title: 'Model Architectures', items: ['YOLOv8', 'SAM', 'ResNet', 'Vision Transformers'] },
+        { title: 'Edge Deployment', items: ['TensorRT', 'ONNX Runtime', 'NVIDIA Jetson', 'OpenVINO'] },
+        { title: 'Labeling and Data', items: ['Label Studio', 'CVAT', 'Roboflow', 'Albumentations'] },
+        { title: 'Video Processing', items: ['FFmpeg', 'DeepStream', 'GStreamer', 'MediaPipe'] },
+        { title: 'Infrastructure', items: ['NVIDIA GPUs', 'AWS Panorama', 'Azure Video Analyzer', 'Docker'] },
+      ],
+    },
+    stats: [
+      { value: '10B+', label: 'Images Processed' },
+      { value: '99%+', label: 'Detection Accuracy' },
+      { value: '<50ms', label: 'Inference Latency' },
+      { value: '500+', label: 'Camera Streams' },
     ],
-    technologies: ['OpenCV', 'YOLO', 'ResNet', 'TensorFlow'],
-    useCases: [
-      'Quality control automation',
-      'Security & surveillance',
-      'Medical image analysis',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'Can vision AI run on edge devices?', answer: 'Yes. We optimize models for edge deployment using quantization, pruning, and architecture-specific compilation. Common targets include NVIDIA Jetson, Intel NCS, and custom ARM devices.' },
+        { question: 'How much labeled data do we need?', answer: 'For fine-tuning, a few hundred labeled images per class is often sufficient. For novel tasks, we recommend 1,000 to 10,000 labeled samples. We can help with labeling strategy and quality assurance.' },
+        { question: 'How do you handle variable lighting and conditions?', answer: 'We use extensive data augmentation during training to make models robust to lighting changes, motion blur, occlusions, and perspective variations common in real-world deployments.' },
+        { question: 'Can you integrate with existing camera systems?', answer: 'Yes. We integrate with RTSP streams, IP cameras, USB cameras, and industrial vision systems. Our solutions work with your existing hardware infrastructure.' },
+      ],
+    },
   },
   {
     id: 'predictive-analytics',
     title: 'Predictive Analytics',
-    description: 'Forecast future trends and behaviors using historical data and ML algorithms.',
-    icon: '📊',
-    features: [
-      'Time series forecasting',
-      'Risk assessment models',
-      'Demand prediction',
-      'Anomaly detection',
+    shortDescription: 'Forecast future trends and behaviors using historical data and ML algorithms.',
+    heroImage: '/RagexAI-website/images/ai/core-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/core/predictive-analytics.jpg',
+    hero: {
+      titlePrefix: 'Data-Driven',
+      titleHighlight: 'Predictive Analytics',
+      titleSuffix: 'for Confident Decisions',
+      subtitle: 'Forecast demand, detect anomalies, and anticipate market shifts with machine learning models built on your historical data and business context.',
+    },
+    overview: {
+      title: 'From Historical Data to Forward-Looking Intelligence',
+      paragraphs: [
+        'Every business decision involves uncertainty. Predictive analytics reduces that uncertainty by finding patterns in historical data and projecting them forward. The result is quantified forecasts your teams can act on with confidence.',
+        'We build predictive models that go beyond simple trend extrapolation. Our systems incorporate seasonality, external variables, causal relationships, and business constraints to produce forecasts that reflect how your market actually works.',
+        'Whether you need demand forecasting, churn prediction, risk scoring, or anomaly detection, we deliver models that integrate into your existing workflows and decision-making processes with clear confidence intervals and explainability.',
+      ],
+    },
+    features: {
+      title: 'Predictive Analytics Capabilities',
+      subtitle: 'Comprehensive forecasting and prediction across business domains.',
+      items: [
+        { title: 'Time Series Forecasting', description: 'Predict future values for revenue, demand, traffic, and other metrics with models that handle seasonality, trends, and external variables.' },
+        { title: 'Churn and Retention Prediction', description: 'Identify customers at risk of leaving before they churn, enabling proactive intervention with personalized retention strategies.' },
+        { title: 'Demand Forecasting', description: 'Forecast product demand at granular levels (SKU, location, channel) to optimize inventory, reduce waste, and improve fulfillment rates.' },
+        { title: 'Anomaly Detection', description: 'Detect unusual patterns in real time across financial transactions, system metrics, manufacturing data, and user behavior streams.' },
+        { title: 'Risk Assessment Models', description: 'Quantify risk for lending, insurance, compliance, and operational decisions with models that balance accuracy with regulatory requirements.' },
+        { title: 'What-If Scenario Analysis', description: 'Simulate the impact of pricing changes, marketing campaigns, and operational decisions before committing resources.' },
+      ],
+    },
+    process: {
+      title: 'Analytics Development Process',
+      subtitle: 'A rigorous approach from data exploration to actionable predictions.',
+      steps: [
+        { title: 'Data Exploration', description: 'We analyze your historical data, identify predictive signals, assess data quality, and define the prediction targets that matter to your business.' },
+        { title: 'Feature Engineering', description: 'We create meaningful features from raw data, incorporating domain knowledge, temporal patterns, and external data sources to improve prediction accuracy.' },
+        { title: 'Model Development', description: 'We train and compare multiple model architectures, using cross-validation and backtesting to select the approach that performs best on your specific data.' },
+        { title: 'Deployment and Automation', description: 'Predictions are delivered via APIs, dashboards, or direct integration into your tools, with automated retraining to maintain accuracy over time.' },
+      ],
+    },
+    useCases: {
+      title: 'Predictive Analytics in Action',
+      subtitle: 'Measurable business impact through intelligent forecasting.',
+      items: [
+        { title: 'Retail Demand Forecasting', description: 'A national retailer uses predictive models to forecast demand at the SKU level across 2,000 stores, automatically generating purchase orders and reducing inventory costs while maintaining stock availability.', metrics: ['30% reduction in overstock', '95% stock availability', '$12M annual savings'] },
+        { title: 'SaaS Churn Prevention', description: 'A B2B SaaS company predicts customer churn 60 days in advance using product usage patterns, support interactions, and account health signals, enabling the customer success team to intervene early.', metrics: ['60-day advance warning', '25% churn reduction', '$2M ARR saved'] },
+        { title: 'Energy Load Forecasting', description: 'A utility company forecasts electricity demand 48 hours ahead with 15-minute granularity, optimizing power generation schedules and reducing reliance on expensive peak-load plants.', metrics: ['3% forecast error rate', '15-minute granularity', '20% peak cost reduction'] },
+      ],
+    },
+    techStack: {
+      title: 'Analytics Technology Stack',
+      subtitle: 'Proven tools for production-grade predictive systems.',
+      categories: [
+        { title: 'ML Frameworks', items: ['XGBoost', 'LightGBM', 'Prophet', 'scikit-learn'] },
+        { title: 'Deep Learning', items: ['PyTorch', 'TensorFlow', 'Temporal Fusion Transformers', 'DeepAR'] },
+        { title: 'Data Engineering', items: ['Apache Spark', 'Airflow', 'dbt', 'Polars'] },
+        { title: 'Feature Stores', items: ['Feast', 'Tecton', 'Redis', 'DynamoDB'] },
+        { title: 'Visualization', items: ['Plotly', 'Grafana', 'Metabase', 'Streamlit'] },
+        { title: 'Infrastructure', items: ['AWS SageMaker', 'Google Vertex AI', 'Docker', 'Kubernetes'] },
+      ],
+    },
+    stats: [
+      { value: '500+', label: 'Prediction Models' },
+      { value: '95%+', label: 'Forecast Accuracy' },
+      { value: '$50M+', label: 'Cost Savings Delivered' },
+      { value: '2,000+', label: 'Daily Predictions' },
     ],
-    technologies: ['Python', 'R', 'Prophet', 'XGBoost'],
-    useCases: [
-      'Sales forecasting',
-      'Inventory optimization',
-      'Fraud detection',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'How much historical data do we need?', answer: 'Typically 2 to 3 years of historical data provides a strong foundation. For seasonal patterns, we need at least 2 full cycles. We can work with less data using transfer learning techniques and external data enrichment.' },
+        { question: 'How accurate are predictive models?', answer: 'Accuracy depends on the use case, data quality, and prediction horizon. Typical MAPE ranges from 5 to 15% for demand forecasting. We establish baselines and set realistic accuracy targets during the discovery phase.' },
+        { question: 'Can predictions integrate with our ERP or planning tools?', answer: 'Yes. We deliver predictions via APIs, scheduled exports, or direct database writes that integrate with SAP, Oracle, NetSuite, and custom planning systems.' },
+        { question: 'How do models adapt to changing conditions?', answer: 'We build automated retraining pipelines that detect data drift and retrain models on recent data. For sudden changes like market disruptions, we can trigger manual retraining with updated parameters.' },
+      ],
+    },
   },
   {
     id: 'recommendation-systems',
     title: 'Recommendation Systems',
-    description: 'Deliver personalized experiences with intelligent recommendation engines.',
-    icon: '🎯',
-    features: [
-      'Collaborative filtering',
-      'Content-based recommendations',
-      'Hybrid recommendation models',
-      'Real-time personalization',
+    shortDescription: 'Deliver personalized experiences with intelligent recommendation engines.',
+    heroImage: '/RagexAI-website/images/ai/core-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/core/recommendation-systems.jpg',
+    hero: {
+      titlePrefix: 'Intelligent',
+      titleHighlight: 'Recommendation',
+      titleSuffix: 'Systems at Scale',
+      subtitle: 'Increase engagement, conversion, and lifetime value with personalization engines that learn individual preferences and surface the right content at the right time.',
+    },
+    overview: {
+      title: 'Personalization That Drives Measurable Business Results',
+      paragraphs: [
+        'Modern users expect experiences tailored to their interests. Recommendation systems make that possible at scale by learning from behavior patterns and preferences to surface relevant products, content, or actions for each individual.',
+        'We build recommendation engines that go beyond simple collaborative filtering. Our systems combine behavioral signals, content attributes, contextual factors, and business rules to deliver recommendations that feel relevant and drive measurable outcomes.',
+        'Whether you are recommending products, articles, courses, or connections, we design systems that balance exploration with exploitation, handle cold-start problems, and respect diversity and fairness constraints your business requires.',
+      ],
+    },
+    features: {
+      title: 'Recommendation Capabilities',
+      subtitle: 'Personalization technology for every platform and use case.',
+      items: [
+        { title: 'Collaborative Filtering', description: 'Learn from user behavior patterns to recommend items that similar users have engaged with, handling sparse data and scaling to millions of users.' },
+        { title: 'Content-Based Recommendations', description: 'Match user preferences to item attributes using deep learning embeddings that capture nuanced content characteristics.' },
+        { title: 'Hybrid Recommendation Models', description: 'Combine multiple recommendation strategies to maximize relevance, handle cold-start users, and improve coverage across your catalog.' },
+        { title: 'Real-Time Personalization', description: 'Update recommendations in real time as users interact with your platform, reflecting their current session context and intent.' },
+        { title: 'Contextual Bandits', description: 'Optimize recommendation strategies using reinforcement learning that balances showing familiar favorites with introducing new discoveries.' },
+        { title: 'Business Rule Integration', description: 'Layer business constraints like inventory levels, margin targets, and promotional priorities on top of ML-driven relevance scores.' },
+      ],
+    },
+    process: {
+      title: 'Recommendation System Development',
+      subtitle: 'From user data to production personalization.',
+      steps: [
+        { title: 'Behavioral Analysis', description: 'We analyze user interaction data to identify preference signals, engagement patterns, and the recommendation contexts that matter most.' },
+        { title: 'Model Architecture', description: 'We design a recommendation architecture that handles your scale, latency requirements, and catalog characteristics.' },
+        { title: 'Training and A/B Testing', description: 'Models are trained offline and validated through A/B tests that measure real business metrics like click-through, conversion, and revenue per session.' },
+        { title: 'Production Scaling', description: 'Recommendation APIs are deployed with caching, precomputation, and fallback strategies to ensure sub-100ms response times at scale.' },
+      ],
+    },
+    useCases: {
+      title: 'Recommendation Engines in Production',
+      subtitle: 'Personalization driving real business metrics.',
+      items: [
+        { title: 'E-commerce Product Discovery', description: 'An online marketplace uses personalized recommendations across homepage, category pages, and cart to surface relevant products from a catalog of 2 million items for each of their 5 million monthly visitors.', metrics: ['35% of revenue from recommendations', '22% higher AOV', '15% better conversion'] },
+        { title: 'Content Platform Engagement', description: 'A media streaming service deploys personalized content recommendations that adapt to viewing history, time of day, and device type to maximize watch time and reduce subscriber churn.', metrics: ['40% more content consumed', '20% lower churn', 'Session duration up 25%'] },
+        { title: 'B2B Product Cross-Sell', description: 'A SaaS platform recommends complementary features and integrations to existing customers based on their usage patterns, driving expansion revenue without sales team involvement.', metrics: ['30% more feature adoption', '18% expansion revenue lift', 'Zero additional sales cost'] },
+      ],
+    },
+    techStack: {
+      title: 'Recommendation Technology Stack',
+      subtitle: 'Scalable infrastructure for real-time personalization.',
+      categories: [
+        { title: 'ML Frameworks', items: ['PyTorch', 'TensorFlow Recommenders', 'Surprise', 'LightFM'] },
+        { title: 'Embedding Models', items: ['Two-Tower Models', 'BERT4Rec', 'GNN-based RecSys', 'Matrix Factorization'] },
+        { title: 'Serving Infrastructure', items: ['Redis', 'Elasticsearch', 'Feature Stores', 'Vector Databases'] },
+        { title: 'A/B Testing', items: ['Optimizely', 'LaunchDarkly', 'Custom Experimentation', 'Statistical Analysis'] },
+        { title: 'Data Pipeline', items: ['Apache Kafka', 'Spark Streaming', 'Airflow', 'dbt'] },
+        { title: 'Monitoring', items: ['Grafana', 'DataDog', 'Custom Dashboards', 'Evidently AI'] },
+      ],
+    },
+    stats: [
+      { value: '5M+', label: 'Users Served Daily' },
+      { value: '<50ms', label: 'Response Time' },
+      { value: '35%', label: 'Revenue from RecSys' },
+      { value: '2M+', label: 'Items in Catalog' },
     ],
-    technologies: ['TensorFlow', 'Spark MLlib', 'Neo4j', 'Redis'],
-    useCases: [
-      'E-commerce product recommendations',
-      'Content discovery platforms',
-      'Personalized marketing',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'How do you handle cold-start users?', answer: 'We use hybrid approaches that combine content-based signals (what an item looks like) with popularity and trending data for new users, gradually transitioning to personalized recommendations as behavioral data accumulates.' },
+        { question: 'Can recommendations respect business rules?', answer: 'Yes. We layer business constraints like inventory limits, margin targets, promotional boosts, and diversity requirements on top of the ML relevance scores. The system respects your commercial priorities.' },
+        { question: 'How quickly do recommendations adapt?', answer: 'Our real-time systems update within seconds of user interactions. Batch models retrain daily or weekly depending on your data velocity and freshness requirements.' },
+        { question: 'What metrics should we track?', answer: 'We typically measure click-through rate, conversion rate, revenue per session, catalog coverage, and diversity. The specific metrics depend on your business model and objectives.' },
+      ],
+    },
   },
 ];
 
-// Agentic AI Services
-export const AGENTIC_AI_SERVICES = [
+// ─── Agentic AI Services ────────────────────────────────────────
+
+export const AGENTIC_AI_SERVICES: AIServiceDetail[] = [
   {
     id: 'autonomous-agents',
     title: 'Autonomous AI Agents',
-    description: 'Deploy intelligent agents that can make decisions and take actions independently.',
-    icon: '🤖',
-    features: [
-      'Goal-oriented task execution',
-      'Decision-making capabilities',
-      'Self-learning mechanisms',
-      'Multi-step reasoning',
+    shortDescription: 'Deploy intelligent agents that make decisions and take actions independently.',
+    heroImage: '/RagexAI-website/images/ai/agentic-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/agentic/autonomous-agents.jpg',
+    hero: {
+      titlePrefix: 'Autonomous',
+      titleHighlight: 'AI Agents',
+      titleSuffix: 'That Think and Act',
+      subtitle: 'Deploy self-directed reasoning systems that plan multi-step tasks, make decisions, and execute actions with minimal human oversight.',
+    },
+    overview: {
+      title: 'Beyond Chatbots: AI That Takes Action',
+      paragraphs: [
+        'Traditional AI responds to prompts. Autonomous AI agents go further: they set sub-goals, plan action sequences, use external tools, and adapt their strategy based on intermediate results. They do not just answer questions; they complete tasks.',
+        'Our autonomous agents are built on robust reasoning frameworks with guardrails for safety, observability for debugging, and human-in-the-loop controls for sensitive decisions. We design systems that are reliable enough for production, not just impressive demos.',
+        'From research assistants that gather and synthesize information to operations agents that monitor systems and take corrective action, we build agents that multiply your team capacity without multiplying headcount.',
+      ],
+    },
+    features: {
+      title: 'Autonomous Agent Capabilities',
+      subtitle: 'Intelligent systems that reason, plan, and execute independently.',
+      items: [
+        { title: 'Multi-Step Reasoning', description: 'Agents break complex tasks into sub-tasks, plan execution order, and adapt their approach when intermediate steps produce unexpected results.' },
+        { title: 'Tool Use and Integration', description: 'Agents call APIs, query databases, execute code, browse the web, and interact with enterprise systems to complete tasks that require external actions.' },
+        { title: 'Memory and Context', description: 'Long-term and short-term memory systems allow agents to maintain context across conversations, learn from past interactions, and build knowledge over time.' },
+        { title: 'Human-in-the-Loop Controls', description: 'Configurable approval gates for high-stakes decisions, with full audit trails and the ability to override or redirect agent actions at any point.' },
+        { title: 'Observability and Debugging', description: 'Complete visibility into agent reasoning chains, tool calls, and decision points for debugging, compliance, and continuous improvement.' },
+        { title: 'Safety and Guardrails', description: 'Defined action boundaries, output validation, rate limiting, and fallback mechanisms to ensure agents operate within safe parameters.' },
+      ],
+    },
+    process: {
+      title: 'Agent Development Process',
+      subtitle: 'From use case definition to production-ready autonomous systems.',
+      steps: [
+        { title: 'Use Case Design', description: 'We map the task end-to-end, identify decision points, define success criteria, and determine where human oversight is needed.' },
+        { title: 'Agent Architecture', description: 'We select the reasoning framework, tool integrations, memory strategy, and guardrail configuration for your specific requirements.' },
+        { title: 'Testing and Iteration', description: 'Agents are tested against diverse scenarios, edge cases, and failure modes with comprehensive evaluation suites before production deployment.' },
+        { title: 'Production Deployment', description: 'Agents are deployed with monitoring, logging, rate limiting, and human escalation paths for reliable, safe operation at scale.' },
+      ],
+    },
+    useCases: {
+      title: 'Autonomous Agents in Production',
+      subtitle: 'Real implementations that deliver measurable results.',
+      items: [
+        { title: 'Research and Analysis Agent', description: 'A consulting firm deploys research agents that gather information from multiple sources, synthesize findings, and produce structured reports, reducing research time from days to hours.', metrics: ['80% reduction in research time', 'Multi-source synthesis', 'Structured report output'] },
+        { title: 'IT Operations Agent', description: 'A technology company uses autonomous agents to monitor infrastructure, diagnose issues, execute remediation scripts, and escalate only when human judgment is required.', metrics: ['60% fewer tickets escalated', 'Mean time to resolve down 45%', '24/7 automated response'] },
+        { title: 'Sales Development Agent', description: 'A B2B company deploys agents that research prospects, craft personalized outreach, schedule meetings, and update CRM records, allowing human reps to focus on closing.', metrics: ['3x more qualified meetings', 'Personalized outreach at scale', 'Zero manual data entry'] },
+      ],
+    },
+    techStack: {
+      title: 'Agent Technology Stack',
+      subtitle: 'Robust frameworks for building reliable autonomous systems.',
+      categories: [
+        { title: 'Agent Frameworks', items: ['LangGraph', 'CrewAI', 'AutoGen', 'Custom Orchestrators'] },
+        { title: 'Language Models', items: ['GPT-4o', 'Claude 3.5', 'LLaMA 3', 'Mistral Large'] },
+        { title: 'Tool Integration', items: ['REST APIs', 'Browser Automation', 'Code Execution', 'Database Queries'] },
+        { title: 'Memory Systems', items: ['Vector Databases', 'Redis', 'PostgreSQL', 'Knowledge Graphs'] },
+        { title: 'Observability', items: ['LangSmith', 'Helicone', 'OpenTelemetry', 'Custom Logging'] },
+        { title: 'Infrastructure', items: ['Docker', 'Kubernetes', 'Message Queues', 'Event Streams'] },
+      ],
+    },
+    stats: [
+      { value: '50+', label: 'Agents Deployed' },
+      { value: '80%', label: 'Task Automation Rate' },
+      { value: '10x', label: 'Throughput Increase' },
+      { value: '99.9%', label: 'Agent Uptime' },
     ],
-    technologies: ['LangChain', 'AutoGPT', 'OpenAI', 'CrewAI'],
-    useCases: [
-      'Autonomous customer support',
-      'Automated research assistants',
-      'Smart process automation',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'How do you prevent agents from making costly mistakes?', answer: 'We implement multiple safety layers: action boundaries that define what agents can and cannot do, approval gates for high-impact decisions, output validation checks, and comprehensive monitoring with automated alerts.' },
+        { question: 'Can agents learn and improve over time?', answer: 'Yes. We build feedback loops where agent performance is evaluated, successful strategies are reinforced, and failures trigger improvement. Human feedback is incorporated to continuously refine agent behavior.' },
+        { question: 'What happens when an agent encounters something unexpected?', answer: 'Agents have defined fallback behaviors: retry with modified approach, escalate to a human operator, or gracefully degrade to a simpler response. The specific behavior is configured per use case.' },
+        { question: 'How much does it cost to run autonomous agents?', answer: 'Costs depend on the LLM usage, tool calls, and compute requirements. We optimize for cost efficiency through caching, model selection strategies, and intelligent routing to minimize LLM calls.' },
+      ],
+    },
   },
   {
     id: 'workflow-automation',
-    title: 'Workflow Automation Agents',
-    description: 'Streamline complex workflows with intelligent automation agents.',
-    icon: '⚙️',
-    features: [
-      'Process orchestration',
-      'Intelligent task routing',
-      'Exception handling',
-      'Integration with existing tools',
+    title: 'Workflow Automation',
+    shortDescription: 'Streamline complex workflows with intelligent automation agents.',
+    heroImage: '/RagexAI-website/images/ai/agentic-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/agentic/workflow-automation.jpg',
+    hero: {
+      titlePrefix: 'Intelligent',
+      titleHighlight: 'Workflow Automation',
+      titleSuffix: 'for Modern Operations',
+      subtitle: 'Replace manual handoffs and repetitive processes with AI-powered automation that handles exceptions, makes decisions, and scales without adding headcount.',
+    },
+    overview: {
+      title: 'Automation That Handles the Messy Middle',
+      paragraphs: [
+        'Traditional automation breaks when processes have exceptions, require judgment, or involve unstructured data. AI-powered workflow automation handles these cases by combining structured rules with intelligent decision-making.',
+        'We build end-to-end automation for complex business processes that span multiple systems, involve document processing, and require contextual decisions. The result is workflows that run reliably at scale with minimal human intervention.',
+        'Our automation solutions integrate with your existing tools and systems, augmenting rather than replacing your technology stack. We start with the highest-impact processes and expand automation coverage incrementally.',
+      ],
+    },
+    features: {
+      title: 'Workflow Automation Capabilities',
+      subtitle: 'End-to-end process automation with AI intelligence.',
+      items: [
+        { title: 'Process Orchestration', description: 'Coordinate multi-step workflows across systems with conditional logic, parallel execution, error handling, and retry mechanisms built in.' },
+        { title: 'Intelligent Document Processing', description: 'Extract, classify, and route information from invoices, contracts, forms, and emails without templates or manual configuration.' },
+        { title: 'Decision Automation', description: 'Automate routine decisions using business rules, ML models, and contextual data while routing edge cases to human reviewers.' },
+        { title: 'Exception Handling', description: 'AI-powered exception management that diagnoses issues, attempts resolution, and escalates with full context when human intervention is needed.' },
+        { title: 'Cross-System Integration', description: 'Connect disparate systems through APIs, webhooks, and database integrations to create unified workflows across your technology stack.' },
+        { title: 'Process Mining and Optimization', description: 'Analyze existing workflows to identify bottlenecks, redundancies, and automation opportunities with data-driven recommendations.' },
+      ],
+    },
+    process: {
+      title: 'Automation Development Process',
+      subtitle: 'From process analysis to production automation.',
+      steps: [
+        { title: 'Process Discovery', description: 'We map your current workflows, identify pain points, quantify manual effort, and prioritize automation opportunities by ROI.' },
+        { title: 'Automation Design', description: 'We design the automated workflow with decision logic, exception handling, and integration points defined in detail.' },
+        { title: 'Build and Test', description: 'Automations are built incrementally, tested against real data and edge cases, and validated with your team before going live.' },
+        { title: 'Deploy and Optimize', description: 'Production deployment with monitoring dashboards, performance tracking, and continuous optimization based on real usage data.' },
+      ],
+    },
+    useCases: {
+      title: 'Workflow Automation in Action',
+      subtitle: 'Process automation that delivers real efficiency gains.',
+      items: [
+        { title: 'Invoice Processing Pipeline', description: 'A logistics company processes 10,000 invoices monthly through automated extraction, matching, approval routing, and payment initiation, reducing processing time from days to minutes.', metrics: ['95% straight-through processing', '10,000 invoices/month', '80% cost reduction'] },
+        { title: 'Employee Onboarding', description: 'An enterprise automates the entire onboarding workflow: account provisioning, equipment ordering, training assignment, document collection, and compliance verification across 15 systems.', metrics: ['15 systems integrated', 'Onboarding time cut by 60%', 'Zero manual provisioning'] },
+        { title: 'Claims Processing', description: 'An insurance company automates claims intake, document verification, coverage validation, and initial assessment, routing only complex cases to adjusters for review.', metrics: ['70% of claims auto-processed', '3-day to 3-hour turnaround', '40% cost per claim reduction'] },
+      ],
+    },
+    techStack: {
+      title: 'Automation Technology Stack',
+      subtitle: 'Enterprise-grade tools for reliable workflow automation.',
+      categories: [
+        { title: 'Orchestration', items: ['n8n', 'Temporal', 'Apache Airflow', 'Custom Engines'] },
+        { title: 'Document AI', items: ['GPT-4 Vision', 'Azure Document Intelligence', 'Textract', 'Custom OCR'] },
+        { title: 'Integration', items: ['REST APIs', 'GraphQL', 'Webhooks', 'Message Queues'] },
+        { title: 'Decision Engines', items: ['Business Rules Engines', 'ML Models', 'Decision Trees', 'Scoring Systems'] },
+        { title: 'Monitoring', items: ['Prometheus', 'Grafana', 'PagerDuty', 'Custom Dashboards'] },
+        { title: 'Infrastructure', items: ['Docker', 'Kubernetes', 'AWS Lambda', 'Event-Driven Architecture'] },
+      ],
+    },
+    stats: [
+      { value: '100+', label: 'Workflows Automated' },
+      { value: '85%', label: 'Manual Effort Reduced' },
+      { value: '10K+', label: 'Daily Transactions' },
+      { value: '99.7%', label: 'Processing Accuracy' },
     ],
-    technologies: ['n8n', 'Zapier', 'Make', 'Custom APIs'],
-    useCases: [
-      'Sales pipeline automation',
-      'Document processing',
-      'Report generation',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'What processes are best suited for automation?', answer: 'High-volume, rule-based processes with structured inputs are ideal starting points. We also automate processes with moderate complexity using AI for document processing and decision-making.' },
+        { question: 'How do you handle exceptions and errors?', answer: 'We build exception handling into every workflow with retry logic, alternative paths, and human escalation. The system provides full context to reviewers when manual intervention is needed.' },
+        { question: 'Can automation work with our legacy systems?', answer: 'Yes. We integrate with legacy systems through APIs, database connections, screen scraping (when necessary), and file-based interfaces. We adapt to your existing infrastructure.' },
+        { question: 'How quickly can we see ROI?', answer: 'Most automation projects show positive ROI within 3 to 6 months. High-volume processes often pay back within weeks of deployment. We quantify expected savings during the discovery phase.' },
+      ],
+    },
   },
   {
     id: 'ai-assistants',
     title: 'AI Chat Assistants',
-    description: 'Create conversational AI assistants for enhanced customer engagement.',
-    icon: '💬',
-    features: [
-      'Natural conversation flow',
-      'Context awareness',
-      'Multi-language support',
-      'Integration with knowledge bases',
+    shortDescription: 'Create conversational AI assistants for enhanced customer engagement.',
+    heroImage: '/RagexAI-website/images/ai/agentic-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/agentic/ai-assistants.jpg',
+    hero: {
+      titlePrefix: 'Conversational',
+      titleHighlight: 'AI Assistants',
+      titleSuffix: 'That Understand and Deliver',
+      subtitle: 'Build intelligent chat assistants that resolve customer queries, guide users through complex processes, and integrate with your knowledge base and business systems.',
+    },
+    overview: {
+      title: 'Customer Conversations at Scale Without Compromising Quality',
+      paragraphs: [
+        'Customer expectations for instant, accurate support have never been higher. AI chat assistants meet that demand by providing immediate responses grounded in your knowledge base, policies, and product information around the clock.',
+        'Our assistants go beyond scripted responses. They understand context, maintain conversation history, ask clarifying questions, and escalate gracefully when they reach the limits of their knowledge. The experience feels natural, not robotic.',
+        'We build assistants that integrate with your CRM, helpdesk, product database, and internal documentation so every response is informed by real data and consistent with your brand voice and support policies.',
+      ],
+    },
+    features: {
+      title: 'AI Assistant Capabilities',
+      subtitle: 'Conversational intelligence for customer-facing and internal use cases.',
+      items: [
+        { title: 'RAG-Powered Knowledge', description: 'Assistants retrieve answers from your documentation, knowledge base, and product catalog using retrieval-augmented generation for accurate, sourced responses.' },
+        { title: 'Multi-Turn Conversation', description: 'Maintain context across complex conversations with memory, follow-up handling, and natural conversation flow that resolves issues in fewer turns.' },
+        { title: 'Multi-Channel Deployment', description: 'Deploy the same assistant across web chat, mobile apps, Slack, Teams, WhatsApp, and email with consistent behavior and shared conversation history.' },
+        { title: 'Sentiment Detection', description: 'Detect customer frustration or urgency in real time and adjust responses, escalate to human agents, or trigger priority handling workflows.' },
+        { title: 'Action Execution', description: 'Assistants can look up orders, update accounts, schedule appointments, process returns, and perform other actions directly within the conversation.' },
+        { title: 'Analytics and Insights', description: 'Track resolution rates, common questions, satisfaction scores, and conversation flows to continuously improve assistant performance and coverage.' },
+      ],
+    },
+    process: {
+      title: 'Assistant Development Process',
+      subtitle: 'From knowledge base to production-ready conversational AI.',
+      steps: [
+        { title: 'Knowledge Mapping', description: 'We inventory your documentation, FAQs, product data, and policies to define the assistant knowledge scope and identify gaps.' },
+        { title: 'Conversation Design', description: 'We design conversation flows, define persona and tone, set up escalation rules, and configure action capabilities.' },
+        { title: 'Build and Train', description: 'The assistant is built, connected to your knowledge base and systems, and tested against real customer queries and edge cases.' },
+        { title: 'Launch and Iterate', description: 'We deploy with monitoring, gather user feedback, and continuously expand coverage and improve response quality.' },
+      ],
+    },
+    useCases: {
+      title: 'AI Assistants in Production',
+      subtitle: 'Intelligent conversations delivering real business value.',
+      items: [
+        { title: 'Customer Support Automation', description: 'An e-commerce company deploys an AI assistant that handles 75% of incoming support queries, resolving order status, returns, and product questions without human involvement.', metrics: ['75% deflection rate', 'Average resolution in 90 seconds', '4.6/5 satisfaction score'] },
+        { title: 'Internal IT Helpdesk', description: 'A 5,000-person company uses an AI assistant for IT support that resolves password resets, software requests, VPN issues, and common troubleshooting, freeing the IT team for complex projects.', metrics: ['60% fewer IT tickets', '24/7 availability', '2-minute average resolution'] },
+        { title: 'Product Onboarding Guide', description: 'A SaaS platform deploys an in-app assistant that guides new users through setup, answers feature questions, and provides contextual help, improving activation rates and reducing support burden.', metrics: ['40% better activation', '30% fewer onboarding tickets', 'Contextual in-app help'] },
+      ],
+    },
+    techStack: {
+      title: 'Assistant Technology Stack',
+      subtitle: 'Production-grade tools for intelligent conversation.',
+      categories: [
+        { title: 'Language Models', items: ['GPT-4o', 'Claude 3.5', 'LLaMA 3', 'Mistral'] },
+        { title: 'RAG Infrastructure', items: ['Pinecone', 'Weaviate', 'LangChain', 'LlamaIndex'] },
+        { title: 'Channels', items: ['Web Widget', 'Mobile SDK', 'Slack', 'WhatsApp API'] },
+        { title: 'Backend', items: ['Node.js', 'Python', 'FastAPI', 'WebSocket'] },
+        { title: 'Analytics', items: ['Custom Dashboards', 'Mixpanel', 'PostHog', 'Conversation Logs'] },
+        { title: 'Infrastructure', items: ['Docker', 'Kubernetes', 'Redis', 'PostgreSQL'] },
+      ],
+    },
+    stats: [
+      { value: '75%', label: 'Average Deflection' },
+      { value: '90s', label: 'Average Resolution' },
+      { value: '4.6/5', label: 'User Satisfaction' },
+      { value: '24/7', label: 'Availability' },
     ],
-    technologies: ['GPT-4', 'Claude', 'Rasa', 'Dialogflow'],
-    useCases: [
-      'Customer service automation',
-      'Internal help desk',
-      'Virtual shopping assistants',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'How do you prevent the assistant from giving wrong answers?', answer: 'We use retrieval-augmented generation so answers are grounded in your documentation. When the assistant is uncertain, it says so and escalates to a human. We also implement output validation and citation requirements.' },
+        { question: 'Can the assistant integrate with our existing helpdesk?', answer: 'Yes. We integrate with Zendesk, Intercom, Freshdesk, Salesforce Service Cloud, and custom helpdesk systems. The assistant works alongside your existing tools.' },
+        { question: 'How long does it take to build an AI assistant?', answer: 'A basic RAG-powered assistant can be deployed in 4 to 6 weeks. More complex assistants with custom actions and multi-channel support typically take 8 to 12 weeks.' },
+        { question: 'What languages does the assistant support?', answer: 'Modern LLMs support 50 to 100 languages. We can configure the assistant for specific languages and optimize accuracy for your primary markets.' },
+      ],
+    },
   },
   {
     id: 'multi-agent-systems',
     title: 'Multi-Agent Systems',
-    description: 'Coordinate multiple AI agents working together to solve complex problems.',
-    icon: '🔗',
-    features: [
-      'Agent collaboration',
-      'Task delegation',
-      'Distributed problem-solving',
-      'Consensus mechanisms',
+    shortDescription: 'Coordinate multiple AI agents working together to solve complex problems.',
+    heroImage: '/RagexAI-website/images/ai/agentic-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/agentic/multi-agent-systems.jpg',
+    hero: {
+      titlePrefix: 'Collaborative',
+      titleHighlight: 'Multi-Agent',
+      titleSuffix: 'Systems for Complex Tasks',
+      subtitle: 'Orchestrate teams of specialized AI agents that collaborate, delegate, and coordinate to solve problems too complex for any single system.',
+    },
+    overview: {
+      title: 'When One Agent Is Not Enough',
+      paragraphs: [
+        'Some tasks require multiple forms of expertise working together: a researcher gathering data, an analyst interpreting it, a writer drafting the report, and a reviewer checking accuracy. Multi-agent systems replicate this division of labor with AI.',
+        'We design agent teams where each agent has a defined role, specialized tools, and clear communication protocols. An orchestrator coordinates their work, manages dependencies, and assembles their individual outputs into a cohesive result.',
+        'Multi-agent systems excel at tasks that involve parallel workstreams, diverse skill requirements, and iterative refinement. The architecture scales naturally, as adding capability means adding a specialist agent, not redesigning the entire system.',
+      ],
+    },
+    features: {
+      title: 'Multi-Agent Capabilities',
+      subtitle: 'Coordinated AI teams for complex, multi-faceted tasks.',
+      items: [
+        { title: 'Agent Specialization', description: 'Each agent is optimized for a specific role with tailored prompts, tools, and knowledge, leading to better performance than generalist approaches.' },
+        { title: 'Orchestration and Coordination', description: 'A supervisor agent manages task delegation, monitors progress, resolves conflicts, and ensures the team delivers a coherent final output.' },
+        { title: 'Inter-Agent Communication', description: 'Structured message passing between agents with defined protocols for sharing information, requesting help, and reporting results.' },
+        { title: 'Parallel Execution', description: 'Independent sub-tasks run concurrently across multiple agents, dramatically reducing end-to-end completion time for complex workflows.' },
+        { title: 'Quality Assurance Agents', description: 'Dedicated reviewer agents that check outputs for accuracy, consistency, and compliance before results are finalized.' },
+        { title: 'Dynamic Team Composition', description: 'Agent teams can be assembled dynamically based on task requirements, scaling up for complex jobs and minimizing cost for simple ones.' },
+      ],
+    },
+    process: {
+      title: 'Multi-Agent Development Process',
+      subtitle: 'From task analysis to coordinated agent deployment.',
+      steps: [
+        { title: 'Task Decomposition', description: 'We break the target task into sub-tasks, identify required specializations, and map dependencies between components.' },
+        { title: 'Agent Design', description: 'Each agent is designed with role definition, tool access, knowledge scope, and communication interfaces tailored to its specialty.' },
+        { title: 'Orchestration Logic', description: 'We build the coordination layer that manages task assignment, progress tracking, conflict resolution, and output assembly.' },
+        { title: 'Integration Testing', description: 'The full agent team is tested end-to-end against realistic scenarios to validate coordination, accuracy, and performance at scale.' },
+      ],
+    },
+    useCases: {
+      title: 'Multi-Agent Systems in Production',
+      subtitle: 'Coordinated AI solving complex real-world problems.',
+      items: [
+        { title: 'Due Diligence Automation', description: 'An investment firm uses a multi-agent system for due diligence: one agent gathers financial data, another analyzes market position, a third reviews legal documents, and a coordinator assembles the final report.', metrics: ['5x faster due diligence', 'Comprehensive analysis', 'Consistent report quality'] },
+        { title: 'Content Production Pipeline', description: 'A media company deploys agent teams for content production: a researcher gathers sources, a writer drafts articles, a fact-checker validates claims, and an editor polishes the final output.', metrics: ['10x content throughput', 'Built-in fact checking', 'Consistent editorial quality'] },
+        { title: 'Software Development Assistance', description: 'A development team uses multi-agent systems where a planner breaks down features, a coder implements them, a reviewer checks code quality, and a tester validates functionality.', metrics: ['3x faster prototyping', 'Automated code review', 'Comprehensive test coverage'] },
+      ],
+    },
+    techStack: {
+      title: 'Multi-Agent Technology Stack',
+      subtitle: 'Frameworks and tools for building coordinated agent systems.',
+      categories: [
+        { title: 'Agent Frameworks', items: ['CrewAI', 'AutoGen', 'LangGraph', 'Custom Orchestrators'] },
+        { title: 'Language Models', items: ['GPT-4o', 'Claude 3.5', 'Gemini Pro', 'LLaMA 3'] },
+        { title: 'Communication', items: ['Message Queues', 'Shared Memory', 'Event Streams', 'gRPC'] },
+        { title: 'State Management', items: ['Redis', 'PostgreSQL', 'Graph Databases', 'Vector Stores'] },
+        { title: 'Observability', items: ['LangSmith', 'Helicone', 'Custom Tracing', 'OpenTelemetry'] },
+        { title: 'Infrastructure', items: ['Docker', 'Kubernetes', 'Serverless Functions', 'Async Workers'] },
+      ],
+    },
+    stats: [
+      { value: '20+', label: 'Agent Teams Deployed' },
+      { value: '5x', label: 'Throughput Increase' },
+      { value: '90%+', label: 'Quality Score' },
+      { value: '70%', label: 'Cost Reduction' },
     ],
-    technologies: ['CrewAI', 'AutoGen', 'LangGraph', 'Custom frameworks'],
-    useCases: [
-      'Complex research tasks',
-      'Software development teams',
-      'Business process optimization',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'When should we use multi-agent vs. single agent?', answer: 'Multi-agent systems are ideal when tasks require diverse expertise, benefit from parallel execution, or need built-in quality checking. For simpler, linear tasks, a single agent is more efficient and easier to maintain.' },
+        { question: 'How do agents resolve disagreements?', answer: 'We implement resolution strategies: majority voting, confidence-based weighting, supervisor arbitration, or human escalation depending on the stakes and domain. The approach is configured per use case.' },
+        { question: 'What are the cost implications?', answer: 'Multi-agent systems use more LLM calls per task than single agents. We optimize costs through model routing (using cheaper models for simpler sub-tasks), caching, and efficient orchestration to keep per-task costs reasonable.' },
+        { question: 'Can we add new agent roles later?', answer: 'Yes. The modular architecture means new specialist agents can be added without redesigning existing ones. This makes the system easy to extend as your needs evolve.' },
+      ],
+    },
   },
   {
     id: 'business-automation',
-    title: 'AI Business Process Automation',
-    description: 'Transform business operations with intelligent automation solutions.',
-    icon: '🏢',
-    features: [
-      'End-to-end process automation',
-      'Intelligent document processing',
-      'Automated decision-making',
-      'Performance analytics',
+    title: 'Business Process AI',
+    shortDescription: 'Transform business operations with intelligent automation solutions.',
+    heroImage: '/RagexAI-website/images/ai/agentic-hero.jpg',
+    contentImage: '/RagexAI-website/images/ai/agentic/business-automation.jpg',
+    hero: {
+      titlePrefix: 'AI-Powered',
+      titleHighlight: 'Business Process',
+      titleSuffix: 'Transformation',
+      subtitle: 'Modernize core business operations with intelligent automation that handles documents, decisions, and workflows across your entire organization.',
+    },
+    overview: {
+      title: 'Operational Excellence Through Intelligent Automation',
+      paragraphs: [
+        'Business processes in most organizations still rely on manual handoffs, spreadsheet-based decisions, and email chains. This creates bottlenecks, introduces errors, and limits your ability to scale operations as the business grows.',
+        'AI-powered business process automation addresses these challenges by bringing intelligence to every step: documents are processed automatically, decisions are made consistently, and workflows adapt to changing conditions without manual intervention.',
+        'We focus on high-impact processes first, delivering measurable ROI within months rather than years. Our approach preserves your existing systems and processes while layering intelligence on top, minimizing disruption while maximizing improvement.',
+      ],
+    },
+    features: {
+      title: 'Business Process AI Capabilities',
+      subtitle: 'Comprehensive automation for enterprise operations.',
+      items: [
+        { title: 'Intelligent Document Processing', description: 'Automate extraction and processing of invoices, purchase orders, contracts, and forms with AI that adapts to new document formats without programming.' },
+        { title: 'Decision Automation', description: 'Replace manual approval chains and spreadsheet-based decisions with AI models that apply consistent logic while handling exceptions intelligently.' },
+        { title: 'Process Monitoring', description: 'Real-time visibility into process health, throughput, bottlenecks, and SLA compliance with automated alerts and recommended actions.' },
+        { title: 'Compliance Automation', description: 'Automate regulatory checks, audit trail generation, and compliance reporting to reduce risk and free your team from manual compliance work.' },
+        { title: 'Vendor and Procurement AI', description: 'Automate vendor evaluation, purchase order matching, and spend analysis with AI that identifies cost-saving opportunities.' },
+        { title: 'HR Process Automation', description: 'Streamline recruitment screening, onboarding workflows, leave management, and employee query resolution with intelligent automation.' },
+      ],
+    },
+    process: {
+      title: 'Process Transformation Approach',
+      subtitle: 'A pragmatic path from current state to automated operations.',
+      steps: [
+        { title: 'Process Assessment', description: 'We audit your current processes, quantify manual effort and error rates, and identify the highest-ROI automation opportunities.' },
+        { title: 'Solution Design', description: 'We design the target automated workflow with AI components, integration points, exception handling, and governance controls.' },
+        { title: 'Phased Implementation', description: 'We build and deploy in phases, starting with the most impactful processes and expanding coverage based on results and learnings.' },
+        { title: 'Continuous Improvement', description: 'Post-deployment monitoring and optimization ensures processes continue to improve and adapt to changing business requirements.' },
+      ],
+    },
+    useCases: {
+      title: 'Business Process AI in Action',
+      subtitle: 'Operational transformation across industries.',
+      items: [
+        { title: 'Accounts Payable Automation', description: 'A mid-market company automates their entire AP process: invoice receipt, data extraction, 3-way matching, approval routing, and payment scheduling, reducing processing cost by 75%.', metrics: ['75% cost reduction', '95% straight-through rate', '3-day to same-day processing'] },
+        { title: 'Regulatory Compliance', description: 'A financial services firm automates KYC checks, transaction monitoring, and SAR filing, maintaining compliance while reducing the compliance team burden by 60%.', metrics: ['60% compliance effort reduction', 'Real-time monitoring', 'Automated SAR filing'] },
+        { title: 'Supply Chain Operations', description: 'A distribution company automates demand planning, purchase order generation, inventory optimization, and supplier communication across 50 suppliers and 3 warehouses.', metrics: ['25% inventory reduction', '50 suppliers automated', 'Real-time inventory visibility'] },
+      ],
+    },
+    techStack: {
+      title: 'Business Process Technology Stack',
+      subtitle: 'Enterprise-grade tools for process transformation.',
+      categories: [
+        { title: 'Process Engines', items: ['Temporal', 'Camunda', 'n8n', 'Custom Orchestrators'] },
+        { title: 'Document AI', items: ['GPT-4 Vision', 'Azure Form Recognizer', 'Textract', 'Custom Models'] },
+        { title: 'Integration', items: ['SAP Connectors', 'Oracle Integration', 'REST APIs', 'SFTP'] },
+        { title: 'Analytics', items: ['Power BI', 'Metabase', 'Custom Dashboards', 'Process Mining'] },
+        { title: 'Data', items: ['PostgreSQL', 'Snowflake', 'Redis', 'Apache Kafka'] },
+        { title: 'Security', items: ['SOC 2 Controls', 'Encryption', 'Audit Logging', 'RBAC'] },
+      ],
+    },
+    stats: [
+      { value: '200+', label: 'Processes Automated' },
+      { value: '75%', label: 'Average Cost Reduction' },
+      { value: '95%', label: 'Straight-Through Rate' },
+      { value: '3x', label: 'Processing Speed' },
     ],
-    technologies: ['UiPath', 'Blue Prism', 'Custom AI', 'RPA'],
-    useCases: [
-      'Invoice processing',
-      'HR onboarding automation',
-      'Compliance monitoring',
-    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { question: 'Where should we start with process automation?', answer: 'Start with high-volume, rule-heavy processes that have clear inputs and outputs. Accounts payable, employee onboarding, and customer data entry are common starting points with proven ROI.' },
+        { question: 'How do you handle process exceptions?', answer: 'We build exception handling into every automation: confidence thresholds for AI decisions, human review queues for edge cases, and full audit trails for compliance. The goal is 95% automation with graceful fallback for the rest.' },
+        { question: 'Will this work with our legacy ERP system?', answer: 'Yes. We integrate with SAP, Oracle, NetSuite, Dynamics, and custom ERPs through APIs, database connections, and file-based interfaces. We work around system limitations rather than requiring upgrades.' },
+        { question: 'How do you measure success?', answer: 'We define metrics upfront: processing time, cost per transaction, error rate, throughput, and SLA compliance. We track these continuously and report on actual ROI vs. projections.' },
+      ],
+    },
   },
 ];
 
-// AI Solutions by Industry
+// ─── AI Solutions by Industry ────────────────────────────────────
+
 export const AI_SOLUTIONS_BY_INDUSTRY = [
   {
     id: 'ai-ecommerce',
     title: 'AI for E-commerce',
     description: 'Boost sales and customer satisfaction with AI-powered e-commerce solutions.',
-    icon: '🛒',
     solutions: [
       'Personalized product recommendations',
       'Dynamic pricing optimization',
@@ -217,7 +874,6 @@ export const AI_SOLUTIONS_BY_INDUSTRY = [
     id: 'ai-healthcare',
     title: 'AI for Healthcare',
     description: 'Enhance patient care and operational efficiency with healthcare AI solutions.',
-    icon: '🏥',
     solutions: [
       'Medical image analysis',
       'Predictive patient outcomes',
@@ -237,9 +893,8 @@ export const AI_SOLUTIONS_BY_INDUSTRY = [
     id: 'ai-fintech',
     title: 'AI for FinTech',
     description: 'Secure and optimize financial operations with intelligent AI systems.',
-    icon: '💰',
     solutions: [
-      'Fraud detection & prevention',
+      'Fraud detection and prevention',
       'Credit scoring models',
       'Algorithmic trading',
       'Risk assessment automation',
@@ -257,7 +912,6 @@ export const AI_SOLUTIONS_BY_INDUSTRY = [
     id: 'ai-enterprise',
     title: 'Enterprise AI Integration',
     description: 'Transform enterprise operations with seamless AI integration.',
-    icon: '🏢',
     solutions: [
       'AI-powered analytics dashboards',
       'Automated reporting systems',
@@ -275,31 +929,29 @@ export const AI_SOLUTIONS_BY_INDUSTRY = [
   },
 ];
 
+// ─── Hero and Benefits (for list pages) ────────────────────────
+
 export const AI_FIRST_HERO = {
   title: 'AI-First Solutions',
   subtitle: 'Harness the power of artificial intelligence to transform your business operations and create competitive advantages.',
-  description: 'We build custom AI solutions that solve real business problems—from intelligent automation to advanced machine learning models.',
+  description: 'We build custom AI solutions that solve real business problems, from intelligent automation to advanced machine learning models.',
 };
 
 export const AI_BENEFITS = [
   {
     title: 'Faster Time to Market',
     description: 'Deploy AI solutions 3x faster with our proven frameworks and methodologies.',
-    icon: '⚡',
   },
   {
     title: 'Scalable Architecture',
     description: 'Build AI systems that grow with your business needs and handle increasing data volumes.',
-    icon: '📈',
   },
   {
     title: 'Expert Team',
     description: 'Work with PhD-level data scientists and ML engineers with years of industry experience.',
-    icon: '👥',
   },
   {
     title: 'Production-Ready',
     description: 'Get AI solutions that are tested, secure, and ready for enterprise deployment.',
-    icon: '✅',
   },
 ];

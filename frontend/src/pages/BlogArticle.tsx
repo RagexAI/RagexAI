@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { BLOG_POSTS } from '../data/content';
 
 const ARTICLE_BODIES: Record<string, { intro: string; sections: { heading: string; body: string }[] }> = {
@@ -7,7 +8,7 @@ const ARTICLE_BODIES: Record<string, { intro: string; sections: { heading: strin
     sections: [
       { heading: 'When off-the-shelf works', body: 'Use APIs like OpenAI or Claude when you need general capability (summarization, Q&A, code assist) and can accept black-box behavior. Ideal for MVPs and features where accuracy is "good enough" and you don\'t need to fine-tune on proprietary data.' },
       { heading: 'When to go custom', body: 'Build or fine-tune when you have domain-specific data, strict compliance (e.g., no data leaves your perimeter), or need consistent behavior that APIs don\'t guarantee. Custom models also make sense when per-token cost at scale exceeds the cost of training and hosting your own.' },
-      { heading: 'A practical framework', body: 'Start with an API for speed. Instrument usage and cost. When you hit limits—accuracy, latency, or cost—evaluate fine-tuning or custom training. Run a small proof-of-concept before committing to a full build.' },
+      { heading: 'A practical framework', body: 'Start with an API for speed. Instrument usage and cost. When you hit limits -- accuracy, latency, or cost -- evaluate fine-tuning or custom training. Run a small proof-of-concept before committing to a full build.' },
     ],
   },
   'saas-pricing': {
@@ -35,47 +36,70 @@ export default function BlogArticle() {
 
   if (!post || !body) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <p className="text-slate-muted">Article not found.</p>
-        <Link to="/blog" className="mt-4 inline-block text-accent font-semibold">Back to blog</Link>
+      <div className="container" style={{ paddingTop: 160, paddingBottom: 80, textAlign: 'center' }}>
+        <p className="t-body" style={{ color: 'var(--text-secondary)' }}>Article not found.</p>
+        <Link to="/blog" className="btn-outline mt-4" style={{ display: 'inline-flex' }}>Back to blog</Link>
       </div>
     );
   }
 
   return (
     <>
-      <article className="py-section bg-section">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/blog" className="text-sm font-medium text-accent hover:text-accent-hover mb-6 inline-block">
-            ← Blog
-          </Link>
-          <header className="mb-10">
-            <span className="text-xs font-semibold text-accent uppercase tracking-wider">{post.category}</span>
-            <h1 className="text-4xl font-bold text-slate mt-2 mb-4">{post.title}</h1>
-            <p className="text-slate-muted">{post.date}</p>
-          </header>
-          <p className="text-lg text-slate-muted leading-relaxed mb-10">{body.intro}</p>
+      {/* Hero */}
+      <section className="relative overflow-hidden" style={{ paddingTop: 120, paddingBottom: 60 }}>
+        <div className="container relative" style={{ zIndex: 2, maxWidth: 700 }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm font-medium mb-8" style={{ color: 'var(--blue)' }}>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              Blog
+            </Link>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.06 }}>
+            <span className="eyebrow mb-4" style={{ display: 'inline-flex' }}>{post.category}</span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.1 }} className="t-h1" style={{ maxWidth: 700 }}>
+            {post.title}
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.18 }} className="t-small mt-4">
+            {post.date}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Article Body */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: 700 }}>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="t-body mb-10" style={{ color: 'var(--text-secondary)', lineHeight: 1.9, fontSize: 17 }}>
+            {body.intro}
+          </motion.p>
+
           <div className="space-y-10">
-            {body.sections.map((sec) => (
-              <div key={sec.heading}>
-                <h2 className="text-xl font-bold text-slate mb-3">{sec.heading}</h2>
-                <p className="text-slate-muted leading-relaxed">{sec.body}</p>
-              </div>
+            {body.sections.map((sec, i) => (
+              <motion.div key={sec.heading} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.06 }}>
+                <h2 className="t-h2 mb-4">{sec.heading}</h2>
+                <p className="t-body" style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>{sec.body}</p>
+              </motion.div>
             ))}
           </div>
-          <footer className="mt-14 pt-8 border-t border-divider">
-            <p className="text-sm text-slate-muted">Share this article</p>
-            <div className="flex gap-4 mt-2">
-              <a href="#" className="text-accent hover:text-accent-hover text-sm font-medium">Twitter</a>
-              <a href="#" className="text-accent hover:text-accent-hover text-sm font-medium">LinkedIn</a>
+
+          {/* Footer */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mt-14 pt-8" style={{ borderTop: '1px solid rgba(170,190,212,0.35)' }}>
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <p className="t-small" style={{ fontWeight: 500 }}>Share this article</p>
+                <div className="flex gap-4 mt-2">
+                  <a href="#" style={{ fontSize: 13, fontWeight: 500, color: 'var(--blue)' }}>Twitter</a>
+                  <a href="#" style={{ fontSize: 13, fontWeight: 500, color: 'var(--blue)' }}>LinkedIn</a>
+                </div>
+              </div>
+              <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: 'var(--blue)' }}>
+                View all articles
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
             </div>
-            <div className="mt-8">
-              <p className="text-sm font-semibold text-slate mb-2">Related</p>
-              <Link to="/blog" className="text-sm text-accent hover:text-accent-hover">View all articles →</Link>
-            </div>
-          </footer>
+          </motion.div>
         </div>
-      </article>
+      </section>
     </>
   );
 }
