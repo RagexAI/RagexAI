@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
-import ScrollReveal from '../components/ui/ScrollReveal';
-import { CASE_STUDIES_LIST } from '../data/content';
-import { FEATURED_CASE_STUDY } from '../data/content';
+import { motion } from 'framer-motion';
+import { CASE_STUDIES_LIST, FEATURED_CASE_STUDY } from '../data/content';
 
 const CASE_MAP: Record<string, typeof FEATURED_CASE_STUDY & { solution: string; tech: string[]; quote?: string; quoteAuthor?: string }> = {
   'retail-revenue-ai': {
@@ -51,87 +50,101 @@ export default function CaseStudyDetail() {
 
   if (!study) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <p className="text-slate-muted">Case study not found.</p>
-        <Link to="/case-studies" className="mt-4 inline-block text-accent font-semibold">Back to case studies</Link>
+      <div className="container" style={{ paddingTop: 160, paddingBottom: 80, textAlign: 'center' }}>
+        <p className="t-body" style={{ color: 'var(--text-secondary)' }}>Case study not found.</p>
+        <Link to="/case-studies" className="btn-outline mt-4" style={{ display: 'inline-flex' }}>Back to case studies</Link>
       </div>
     );
   }
 
   return (
     <>
-      <section className="bg-page border-b border-divider">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <Link to="/case-studies" className="text-sm font-medium text-accent hover:text-accent-hover mb-6 inline-block">
-            ← Case studies
-          </Link>
-          <h1 className="text-4xl font-bold text-slate mb-4">{study.title}</h1>
-          <p className="text-slate-muted">{study.client}</p>
-          <div className="flex flex-wrap gap-2 mt-6">
+      {/* Hero */}
+      <section className="relative overflow-hidden" style={{ paddingTop: 120, paddingBottom: 80 }}>
+        <div className="container relative" style={{ zIndex: 2 }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Link to="/case-studies" className="inline-flex items-center gap-1.5 text-sm font-medium mb-8" style={{ color: 'var(--blue)' }}>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              Case Studies
+            </Link>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="t-h1" style={{ maxWidth: 700 }}>
+            {study.title}
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.16 }} className="t-body mt-3" style={{ color: 'var(--text-secondary)' }}>
+            {study.client}
+          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.24 }} className="flex flex-wrap gap-2 mt-6">
             {study.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-accent-soft text-accent text-xs font-medium rounded-lg">
-                {tag}
-              </span>
+              <span key={tag} className="tag">{tag}</span>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: 800 }}>
+          <div className="space-y-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="glass-card p-8">
+              <h2 className="t-h2 mb-4">Challenge</h2>
+              <p className="t-body" style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>{study.challenge}</p>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.08 }} className="glass-card p-8">
+              <h2 className="t-h2 mb-4">Solution</h2>
+              <p className="t-body" style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>{study.solution}</p>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.16 }}>
+              <div className="glass-stat px-6 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                  {study.results.map((r, i) => (
+                    <div key={i}>
+                      <div className="stat-number">{r.value}</div>
+                      <div className="stat-label">{r.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.24 }} className="glass-card-sm p-8">
+              <h2 style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 12, letterSpacing: '0.01em' }}>Technology Stack</h2>
+              <div className="flex flex-wrap gap-2">
+                {study.tech.map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+            </motion.div>
+
+            {study.quote && (
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.32 }} className="glass-card p-8">
+                <div style={{ borderLeft: '3px solid var(--blue)', paddingLeft: 20 }}>
+                  <p className="t-body" style={{ fontStyle: 'italic', color: 'var(--text-primary)', lineHeight: 1.8 }}>
+                    "{study.quote}"
+                  </p>
+                  <p className="t-small mt-3" style={{ fontWeight: 500 }}>-- {study.quoteAuthor}</p>
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>
-      <section className="py-section bg-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <ScrollReveal>
-            <div>
-              <h2 className="text-xl font-bold text-slate mb-3">Challenge</h2>
-              <p className="text-slate-muted leading-relaxed">{study.challenge}</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div>
-              <h2 className="text-xl font-bold text-slate mb-3">Solution</h2>
-              <p className="text-slate-muted leading-relaxed">{study.solution}</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div>
-              <h2 className="text-xl font-bold text-slate mb-3">Results</h2>
-              <div className="flex flex-wrap gap-8">
-                {study.results.map((r) => (
-                  <div key={r.label}>
-                    <p className="text-2xl font-bold text-accent">{r.value}</p>
-                    <p className="text-sm text-slate-muted">{r.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div>
-              <h2 className="text-xl font-bold text-slate mb-3">Technology</h2>
-              <div className="flex flex-wrap gap-2">
-                {study.tech.map((t) => (
-                  <span key={t} className="px-3 py-1.5 bg-page border border-divider rounded-lg text-sm text-slate">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-          {study.quote && (
-            <ScrollReveal>
-              <blockquote className="pl-6 border-l-4 border-accent text-slate italic">
-                "{study.quote}"
-                <footer className="mt-2 not-italic text-sm text-slate-muted">— {study.quoteAuthor}</footer>
-              </blockquote>
-            </ScrollReveal>
-          )}
-        </div>
-      </section>
-      <section className="py-section bg-slate">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Have a similar challenge?</h2>
-          <Link to="/contact" className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate bg-white hover:bg-slate-100 rounded-lg transition-colors">
-            Schedule a call
-            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Link>
+
+      {/* CTA */}
+      <section className="section-sm">
+        <div className="container" style={{ maxWidth: 700 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="glass-card p-12 text-center">
+            <h2 className="t-h2 mb-4">Have a Similar Challenge?</h2>
+            <p className="t-body mx-auto mb-8" style={{ maxWidth: 480, color: 'var(--text-secondary)' }}>
+              Let us discuss how we can build a solution tailored to your needs.
+            </p>
+            <Link to="/contact" className="btn-primary">
+              Schedule a Call
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </>

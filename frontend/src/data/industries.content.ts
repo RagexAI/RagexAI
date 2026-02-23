@@ -10,8 +10,8 @@ export const INDUSTRIES_DATA = [
     name: 'E-commerce & Retail',
     title: 'E-commerce & Retail Solutions',
     description: 'Transform your retail business with technology that drives sales, improves customer experience, and streamlines operations.',
-    icon: '🛒',
-    image: '/images/industries/ecommerce.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/industries/ecommerce.jpg',
     
     challenges: [
       'High customer acquisition costs',
@@ -96,8 +96,8 @@ export const INDUSTRIES_DATA = [
     name: 'Healthcare',
     title: 'Healthcare Technology Solutions',
     description: 'Improve patient care and operational efficiency with secure, compliant healthcare technology.',
-    icon: '🏥',
-    image: '/images/industries/healthcare.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/industries/healthcare.jpg',
     
     challenges: [
       'Paper-based processes',
@@ -182,8 +182,8 @@ export const INDUSTRIES_DATA = [
     name: 'FinTech & Banking',
     title: 'FinTech Solutions',
     description: 'Build secure, scalable financial technology that transforms banking and payments.',
-    icon: '💰',
-    image: '/images/industries/fintech.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/industries/fintech.jpg',
     
     challenges: [
       'Legacy banking systems',
@@ -268,8 +268,8 @@ export const INDUSTRIES_DATA = [
     name: 'EdTech',
     title: 'Education Technology Solutions',
     description: 'Transform learning experiences with innovative educational technology platforms.',
-    icon: '🎓',
-    image: '/images/industries/edtech.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/industries/edtech.jpg',
     
     challenges: [
       'Low student engagement',
@@ -353,8 +353,8 @@ export const INDUSTRIES_DATA = [
     name: 'SaaS Companies',
     title: 'SaaS Product Development',
     description: 'Build and scale SaaS products that customers love and businesses rely on.',
-    icon: '💼',
-    image: '/images/industries/saas.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/industries/saas.jpg',
     
     challenges: [
       'Building MVP quickly',
@@ -438,8 +438,8 @@ export const INDUSTRIES_DATA = [
     name: 'Real Estate',
     title: 'Real Estate Technology Solutions',
     description: 'Modernize real estate operations with technology that streamlines transactions and enhances experiences.',
-    icon: '🏠',
-    image: '/images/industries/real-estate.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/industries/real-estate.jpg',
     
     challenges: [
       'Manual property management',

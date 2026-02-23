@@ -10,8 +10,8 @@ export const SOLUTIONS_DATA = [
     title: 'Web-Based Applications',
     shortDescription: 'Modern web applications that streamline operations and enhance productivity.',
     description: 'Build powerful web applications that work seamlessly across devices and platforms, helping your team work smarter and faster.',
-    icon: '🌐',
-    image: '/images/solutions/web-apps.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/solutions/web-apps.jpg',
     
     challenges: [
       'Need to digitize manual processes',
@@ -81,8 +81,8 @@ export const SOLUTIONS_DATA = [
     title: 'Enterprise Applications',
     shortDescription: 'Mission-critical applications built for large-scale operations and complex workflows.',
     description: 'Enterprise-grade solutions designed to handle complex business processes, high transaction volumes, and stringent security requirements.',
-    icon: '🏢',
-    image: '/images/solutions/enterprise.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/solutions/enterprise.jpg',
     
     challenges: [
       'Legacy systems hindering growth',
@@ -152,8 +152,8 @@ export const SOLUTIONS_DATA = [
     title: 'CRM & ERP Solutions',
     shortDescription: 'Centralize customer relationships and business operations in unified systems.',
     description: 'Custom CRM and ERP solutions that bring together sales, operations, and customer data for a complete business view.',
-    icon: '📊',
-    image: '/images/solutions/crm-erp.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/solutions/crm-erp.jpg',
     
     challenges: [
       'Disconnected customer data',
@@ -223,8 +223,8 @@ export const SOLUTIONS_DATA = [
     title: 'Marketplace Platforms',
     shortDescription: 'Multi-vendor marketplaces that connect buyers and sellers seamlessly.',
     description: 'Build thriving online marketplaces with features for vendors, buyers, and administrators to create a sustainable ecosystem.',
-    icon: '🏪',
-    image: '/images/solutions/marketplace.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/solutions/marketplace.jpg',
     
     challenges: [
       'Complex multi-vendor management',
@@ -296,8 +296,8 @@ export const SOLUTIONS_DATA = [
     title: 'Cloud Migration',
     shortDescription: 'Seamlessly migrate legacy systems to modern cloud infrastructure.',
     description: 'Move your applications and data to the cloud with minimal disruption, maximum performance, and optimized costs.',
-    icon: '☁️',
-    image: '/images/solutions/cloud.jpg',
+    icon: '',
+    image: '/RagexAI-website/images/solutions/cloud.jpg',
     
     challenges: [
       'High on-premise infrastructure costs',

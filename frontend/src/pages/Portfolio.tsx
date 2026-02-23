@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PageHero from '../components/shared/PageHero';
-import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 interface Project {
   id: string;
@@ -19,7 +19,7 @@ const PROJECTS: Project[] = [
     title: 'Full-Stack E-Commerce Platform',
     description: 'End-to-end fashion e-commerce storefront with product catalog, collections, cart management, and secure checkout. Built mobile-first with a clean editorial design focused on conversion and browsing experience.',
     category: 'E-commerce',
-    image: '/images/portfolio/ecommerce-storefront.png',
+    image: '/RagexAI-website/images/portfolio/ecommerce-storefront.png',
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind CSS'],
     metrics: [
       { label: 'Mobile-first design', value: '100%' },
@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
     title: 'Shree Krishna Public School',
     description: 'Official website for Shree Krishna Public School, Bikaner — a RBSE-affiliated senior secondary institution with 20+ years of legacy. Features online admissions, campus information, faculty, gallery, events, and a contact system.',
     category: 'Enterprise',
-    image: '/images/portfolio/shree-krishna-school.png',
+    image: '/RagexAI-website/images/portfolio/shree-krishna-school.png',
     technologies: ['React', 'Responsive Design', 'SEO Optimised', 'CMS'],
     metrics: [
       { label: 'Years of legacy', value: '20+' },
@@ -45,7 +45,7 @@ const PROJECTS: Project[] = [
     title: 'AI-Powered School Management System',
     description: 'Comprehensive SaaS platform covering every school operation — admissions, fee collection, payroll, transport, exam scheduling, and result management. Integrated AI chatbot handles instant query resolution for staff and parents around the clock, reducing admin overhead significantly.',
     category: 'AI',
-    image: '/images/portfolio/sms-dashboard.png',
+    image: '/RagexAI-website/images/portfolio/sms-dashboard.png',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'AI Chatbot', 'REST API'],
     metrics: [
       { label: 'Modules shipped', value: '8+' },
@@ -72,11 +72,29 @@ export default function Portfolio() {
 
   return (
     <>
-      <PageHero
-        title="Our Work"
-        subtitle="Real projects. Shipped and live. Built with precision for real clients."
-        primaryCta={{ label: 'Start Your Project', href: '/contact' }}
-      />
+      {/* Hero */}
+      <section className="relative overflow-hidden" style={{ paddingTop: 120, paddingBottom: 80 }}>
+        <div className="container relative" style={{ zIndex: 2 }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center mb-6">
+            <span className="eyebrow">
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--blue)', display: 'inline-block' }} />
+              Portfolio
+            </span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="t-h1 text-center" style={{ maxWidth: 700, margin: '0 auto' }}>
+            Our Work
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.16 }} className="t-body text-center mx-auto mt-5" style={{ maxWidth: 560, color: 'var(--text-secondary)' }}>
+            Real projects. Shipped and live. Built with precision for real clients.
+          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.24 }} className="flex flex-wrap items-center justify-center gap-4 mt-10">
+            <Link to="/contact" className="btn-primary">
+              Start Your Project
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ── Category filters ────────────────────────────────── */}
       <section style={{ padding: '40px 0 0', background: 'transparent' }}>
@@ -232,9 +250,10 @@ export default function Portfolio() {
           <p style={{ fontSize: 15, color: 'var(--text-secondary)', marginBottom: 28, lineHeight: 1.6 }}>
             Let's talk about how we can engineer something great together.
           </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button variant="primary" size="lg" to="/contact">Start Your Project</Button>
-          </div>
+          <Link to="/contact" className="btn-primary">
+            Start Your Project
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
         </div>
       </section>
     </>
