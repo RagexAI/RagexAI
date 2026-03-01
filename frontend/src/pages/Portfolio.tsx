@@ -19,7 +19,7 @@ const PROJECTS: Project[] = [
     title: 'Full-Stack E-Commerce Platform',
     description: 'End-to-end fashion e-commerce storefront with product catalog, collections, cart management, and secure checkout. Built mobile-first with a clean editorial design focused on conversion and browsing experience.',
     category: 'E-commerce',
-    image: '/RagexAI-website/images/portfolio/ecommerce-storefront.png',
+    image: `${import.meta.env.BASE_URL}/images/portfolio/ecommerce-storefront.png`,
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind CSS'],
     metrics: [
       { label: 'Mobile-first design', value: '100%' },
@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
     title: 'Shree Krishna Public School',
     description: 'Official website for Shree Krishna Public School, Bikaner — a RBSE-affiliated senior secondary institution with 20+ years of legacy. Features online admissions, campus information, faculty, gallery, events, and a contact system.',
     category: 'Enterprise',
-    image: '/RagexAI-website/images/portfolio/shree-krishna-school.png',
+    image: `${import.meta.env.BASE_URL}/images/portfolio/shree-krishna-school.png`,
     technologies: ['React', 'Responsive Design', 'SEO Optimised', 'CMS'],
     metrics: [
       { label: 'Years of legacy', value: '20+' },
@@ -45,7 +45,7 @@ const PROJECTS: Project[] = [
     title: 'AI-Powered School Management System',
     description: 'Comprehensive SaaS platform covering every school operation — admissions, fee collection, payroll, transport, exam scheduling, and result management. Integrated AI chatbot handles instant query resolution for staff and parents around the clock, reducing admin overhead significantly.',
     category: 'AI',
-    image: '/RagexAI-website/images/portfolio/sms-dashboard.png',
+    image: `${import.meta.env.BASE_URL}/images/portfolio/sms-dashboard.png`,
     technologies: ['React', 'Node.js', 'PostgreSQL', 'AI Chatbot', 'REST API'],
     metrics: [
       { label: 'Modules shipped', value: '8+' },
